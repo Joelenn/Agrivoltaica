@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Agrivoltaica - Energía Solar Inteligente para el Sector Agrícola</title>
-    <link rel="stylesheet" href="css/style.css" />
     <style>
         /* ===== GLOBAL PALETTE & DESIGN SYSTEM ===== */
         :root {
-            /* Palette Preservada */
             --c-seal-brown: #321414;
             --c-army-green: #4B5320;
             --c-grasshopper: #7A7229;
@@ -18,26 +16,18 @@
             --c-citron: #DDD06A;
             --c-caput: #592720;
             --c-white: #FFFFFF;
-            
-            /* Backgrounds & Contrast Ajustados para fluidez oscura */
-            --bg-pure-white: #FFFFFF;
-            --text-dark: var(--c-seal-brown);
             --text-light: #F5F5F7;
-
-            /* Navbar Specs (Apple-style conservado) */
-            --apple-nav-bg: rgba(250, 252, 245, 0.75);
-            --apple-nav-border: rgba(60, 52, 31, 0.08); 
+            --apple-nav-bg: rgba(250, 252, 245, 0.82);
+            --apple-nav-border: rgba(60, 52, 31, 0.10);
             --sf-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
         }
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
             margin: 0;
             font-family: var(--sf-font);
-            background: var(--c-seal-brown); /* Fondo general oscuro para evitar destellos blancos */
+            background: var(--c-seal-brown);
             color: var(--text-light);
             padding-top: 44px;
             -webkit-font-smoothing: antialiased;
@@ -47,14 +37,12 @@
 
         /* ===== APPLE-STYLE NAVIGATION ===== */
         .menu-container {
-            width: 100%;
-            height: 44px;
+            width: 100%; height: 44px;
             background: var(--apple-nav-bg);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid var(--apple-nav-border);
-            position: fixed;
-            top: 0; left: 0; z-index: 9999;
+            position: fixed; top: 0; left: 0; z-index: 9999;
             transition: background 0.3s ease;
         }
 
@@ -80,30 +68,21 @@
         }
         .navbar a:hover, .navbar a.active { opacity: 1; }
 
-        /* ===== COMMON UTILS & TYPOGRAPHY ===== */
+        /* ===== UTILS ===== */
         .container { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
-        
-        /* Padding compacto */
-        .section-padding { padding: 60px 0; } 
-        
+        .section-padding { padding: 60px 0; }
         .section-title {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            text-align: center;
-            margin: 0 0 30px; /* Margen inferior reducido para mayor compactación */
-            line-height: 1.1;
-            position: relative;
-            z-index: 2;
+            font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+            letter-spacing: -0.03em; text-align: center;
+            margin: 0 0 30px; line-height: 1.1; position: relative; z-index: 2;
         }
 
-        /* ===== HERO BANNER (100vh PANTALLA COMPLETA) ===== */
+        /* ===== HERO BANNER ===== */
         .header-banner-container {
-            position: relative; width: 100%; min-height: 100vh; /* Ocupa la pantalla completa al inicio */
+            position: relative; width: 100%; min-height: 100vh;
             background: linear-gradient(160deg, var(--c-dark-olive) 0%, var(--c-army-green) 50%, var(--c-seal-brown) 100%);
             display: flex; align-items: center; justify-content: center; overflow: hidden;
-            margin-top: -44px; /* Compensa el padding del body para que sea 100vh exactos */
-            padding-top: 44px;
+            margin-top: -44px; padding-top: 44px;
         }
 
         .header-banner-container::before {
@@ -125,94 +104,320 @@
         .banner-overlay { position: relative; z-index: 2; text-align: center; padding: 0 20px; max-width: 800px; }
         .banner-title {
             font-size: clamp(48px, 8vw, 90px); font-weight: 800; color: var(--text-light);
-            letter-spacing: -0.04em; margin: 0 0 16px; text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            letter-spacing: -0.04em; margin: 0 0 16px; text-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         .banner-subtitle {
-            font-size: clamp(18px, 2.5vw, 24px); color: rgba(255, 255, 255, 0.9);
-            margin: 0 0 40px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            font-size: clamp(18px, 2.5vw, 24px); color: rgba(255,255,255,0.9);
+            margin: 0 0 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
-
         .btn-primary {
             display: inline-block; background: var(--c-sandstorm); color: var(--c-seal-brown);
             font-size: 17px; font-weight: 600; padding: 14px 32px; border-radius: 50px;
-            text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(236, 213, 64, 0.4);
+            text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(236,213,64,0.4);
         }
-        .btn-primary:hover { transform: translateY(-3px); background: var(--c-brass); color: #fff; box-shadow: 0 12px 35px rgba(181, 166, 66, 0.6); }
+        .btn-primary:hover { transform: translateY(-3px); background: var(--c-brass); color: #fff; box-shadow: 0 12px 35px rgba(181,166,66,0.6); }
 
-        /* ===== NOVEDADES (Compacto y Oscuro) ===== */
-        .carousel-section {
-            padding: 60px 0; background: var(--c-seal-brown); position: relative; width: 100%;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .carousel-section .section-title { color: var(--c-sandstorm); margin-bottom: 30px; text-align: center; }
+        /* ====================================================
+           ===== NUEVA SECCIÓN NOVEDADES — EDITORIAL STRIP =====
+           ==================================================== */
 
-        .slider-container {
-            position: relative; width: 100%; max-width: 1000px; height: 500px; margin: 0 auto;
-            background: var(--c-dark-olive); border-radius: 20px; overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        }
-
-        .slider-container .slide { width: 100%; height: 100%; position: absolute; }
-        .slider-container .slide .item {
-            width: 240px; height: 320px; position: absolute; top: 50%; transform: translate(0, -50%);
-            border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            background-position: center; background-size: cover; display: inline-block;
-            transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        .novedades-strip {
+            background: var(--c-seal-brown);
+            position: relative;
+            overflow: hidden;
+            /* Separador visual sutil arriba */
+            border-top: 1px solid rgba(236, 213, 64, 0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
 
-        .slide .item:nth-child(1), .slide .item:nth-child(2) {
-            top: 0; left: 0; transform: translate(0, 0); border-radius: 0; width: 100%; height: 100%;
-            box-shadow: none;
-        }
-        .slide .item:nth-child(2)::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to right, rgba(50, 20, 20, 0.9) 0%, rgba(50, 20, 20, 0.4) 60%, transparent 100%);
+        /* Línea decorativa lateral izquierda */
+        .novedades-strip::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, transparent, var(--c-sandstorm) 30%, var(--c-brass) 70%, transparent);
             z-index: 1;
         }
 
-        .slide .item:nth-child(3) { left: 50%; }
-        .slide .item:nth-child(4) { left: calc(50% + 260px); }
-        .slide .item:nth-child(5) { left: calc(50% + 520px); }
-        .slide .item:nth-child(n + 6) { left: calc(50% + 780px); opacity: 0; }
-
-        .item .content {
-            position: absolute; top: 50%; left: 8%; width: 380px; text-align: left;
-            transform: translate(0, -50%); display: none; z-index: 2;
-        }
-        .slide .item:nth-child(2) .content { display: block; }
-
-        .content .name {
-            font-size: 48px; font-weight: 800; color: #fff; opacity: 0;
-            animation: animateText 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; line-height: 1.1;
-        }
-        .content .des {
-            font-size: 16px; color: rgba(255,255,255,0.85); margin: 12px 0 25px; opacity: 0;
-            animation: animateText 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; line-height: 1.6;
-        }
-        .content button {
-            padding: 12px 28px; border: none; border-radius: 50px; background: var(--c-sandstorm);
-            color: var(--c-seal-brown); font-weight: 600; font-size: 15px; cursor: pointer; opacity: 0;
-            animation: animateText 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s forwards; transition: all 0.3s;
-        }
-        .content button:hover { background: #fff; transform: scale(1.05); box-shadow: 0 6px 15px rgba(255,255,255,0.3);}
-
-        @keyframes animateText {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ---- Header de sección ---- */
+        .strip-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 36px 48px 0;
+            position: relative;
+            z-index: 2;
         }
 
-        .slider-controls {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 10;
+        .strip-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .slider-controls button {
-            width: 45px; height: 45px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.5);
-            color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center;
-            justify-content: center; backdrop-filter: blur(5px); transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .slider-controls button:hover { background: var(--c-sandstorm); color: var(--c-seal-brown); border-color: var(--c-sandstorm); transform: scale(1.1); }
 
-        /* ===== PROYECTO (Fondo Oscuro Cohesivo con Orbes) ===== */
+        .strip-label-line {
+            width: 32px;
+            height: 2px;
+            background: var(--c-sandstorm);
+            border-radius: 2px;
+        }
+
+        .strip-label-text {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--c-sandstorm);
+        }
+
+        .strip-counter {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.06em;
+            font-variant-numeric: tabular-nums;
+            transition: color 0.3s ease;
+        }
+
+        /* ---- Layout principal de 2 columnas ---- */
+        .strip-layout {
+            display: grid;
+            /* columna izquierda: título + nav | columna derecha: tarjetas */
+            grid-template-columns: 260px 1fr;
+            min-height: 380px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Columna izquierda fija: info editorial */
+        .strip-sidebar {
+            padding: 32px 36px 36px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .strip-sidebar-title {
+            font-size: clamp(26px, 2.5vw, 34px);
+            font-weight: 800;
+            color: var(--c-white);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin: 0 0 12px;
+        }
+
+        .strip-sidebar-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Nav dots + flechas */
+        .strip-nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .strip-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .strip-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            flex-shrink: 0;
+        }
+
+        .strip-dot.active {
+            background: var(--c-sandstorm);
+            width: 22px;
+            border-radius: 3px;
+        }
+
+        .strip-arrow {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .strip-arrow:hover {
+            border-color: var(--c-sandstorm);
+            color: var(--c-sandstorm);
+            background: rgba(236, 213, 64, 0.07);
+            transform: scale(1.08);
+        }
+
+        /* Columna derecha: viewport de tarjetas */
+        .strip-viewport {
+            overflow: hidden;
+            position: relative;
+            padding: 28px 0 36px;
+        }
+
+        .strip-track {
+            display: flex;
+            gap: 0;
+            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+
+        /* ---- Tarjeta individual ---- */
+        .strip-card {
+            flex: 0 0 calc(50% - 12px);
+            /* Dos tarjetas visibles a la vez con gap visual */
+            margin-right: 24px;
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--c-dark-olive);
+            /* Nitidez: sin transform en la imagen, solo en el card */
+            cursor: pointer;
+            /* Altura compacta */
+            height: 280px;
+            transition: box-shadow 0.4s ease;
+        }
+
+        /* La última tarjeta no tiene margen derecho */
+        .strip-card:last-child { margin-right: 0; }
+
+        /* Foto de fondo — sin zoom, solo fade */
+        .strip-card-img {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            /* Sin transform para evitar blur/pixelado */
+            transition: opacity 0.5s ease;
+            will-change: opacity;
+        }
+
+        /* Overlay gradiente siempre presente — de abajo a arriba */
+        .strip-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(27, 14, 5, 0.96) 0%,
+                rgba(27, 14, 5, 0.55) 45%,
+                rgba(27, 14, 5, 0.10) 100%
+            );
+            transition: background 0.4s ease;
+        }
+
+        .strip-card:hover .strip-card-overlay {
+            background: linear-gradient(
+                to top,
+                rgba(27, 14, 5, 0.98) 0%,
+                rgba(27, 14, 5, 0.65) 50%,
+                rgba(27, 14, 5, 0.15) 100%
+            );
+        }
+
+        /* Contenido del card */
+        .strip-card-body {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 22px 24px 22px;
+            z-index: 2;
+        }
+
+        .strip-card-tag {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--c-sandstorm);
+            background: rgba(236, 213, 64, 0.12);
+            border: 1px solid rgba(236, 213, 64, 0.25);
+            padding: 3px 9px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        .strip-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--c-white);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin: 0 0 7px;
+        }
+
+        .strip-card-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
+            margin: 0 0 14px;
+            /* Limita a 2 líneas */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .strip-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--c-sandstorm);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .strip-card-cta-arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+        }
+
+        .strip-card:hover .strip-card-cta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .strip-card:hover .strip-card-cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Borde sutil en hover */
+        .strip-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            border: 1px solid rgba(236, 213, 64, 0);
+            transition: border-color 0.35s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .strip-card:hover::after {
+            border-color: rgba(236, 213, 64, 0.25);
+        }
+
+        /* ===== PROYECTO (Dark Orbs) ===== */
         .bg-dark-orbs {
             background: var(--c-dark-olive); position: relative; overflow: hidden;
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -223,45 +428,32 @@
         }
         .orb-1 { width: 400px; height: 400px; background: var(--c-army-green); top: -50px; left: -50px; }
         .orb-2 { width: 500px; height: 500px; background: var(--c-grasshopper); bottom: -100px; right: -50px; animation-delay: -6s; }
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 40px) scale(1.1); }
-        }
+        @keyframes floatOrb { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,40px) scale(1.1); } }
 
         .bg-dark-orbs .section-title { color: var(--c-sandstorm); }
 
         .card-group {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; position: relative; z-index: 2;
         }
-
         .card-clean {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            border-radius: 20px; padding: 40px 30px; text-align: center;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3); border-radius: 20px; padding: 40px 30px; text-align: center;
+            transition: transform 0.4s cubic-bezier(0.25,1,0.5,1), box-shadow 0.4s ease;
         }
-        .card-clean:hover {
-            transform: translateY(-8px); box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4); background: rgba(255, 255, 255, 0.05);
-        }
+        .card-clean:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(0,0,0,0.4); background: rgba(255,255,255,0.05); }
         .card-icon {
             display: inline-flex; align-items: center; justify-content: center;
-            width: 70px; height: 70px; background: rgba(0, 0, 0, 0.2); border-radius: 50%;
+            width: 70px; height: 70px; background: rgba(0,0,0,0.2); border-radius: 50%;
             font-size: 32px; margin-bottom: 20px; color: var(--c-sandstorm);
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); transition: transform 0.4s ease;
             border: 1px solid rgba(255,255,255,0.05);
         }
-        .card-clean:hover .card-icon { transform: scale(1.1) rotate(5deg); border-color: rgba(236, 213, 64, 0.3); }
-        .card-clean h3 {
-            font-size: 22px; font-weight: 700; color: var(--c-sandstorm); margin: 0 0 14px;
-        }
-        .card-clean p {
-            font-size: 15px; font-weight: 400; color: rgba(255, 255, 255, 0.8); line-height: 1.6; margin: 0;
-        }
+        .card-clean:hover .card-icon { transform: scale(1.1) rotate(5deg); border-color: rgba(236,213,64,0.3); }
+        .card-clean h3 { font-size: 22px; font-weight: 700; color: var(--c-sandstorm); margin: 0 0 14px; }
+        .card-clean p { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0; }
 
-        /* ===== CARACTERÍSTICAS (Layout Editorial Superpuesto Compacto) ===== */
+        /* ===== CARACTERÍSTICAS ===== */
         .features-editorial {
             background: var(--c-seal-brown); position: relative; overflow: hidden;
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -271,7 +463,6 @@
             background-image: linear-gradient(var(--c-sandstorm) 1px, transparent 1px), linear-gradient(90deg, var(--c-sandstorm) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-
         .features-editorial .section-title { color: var(--c-sandstorm); }
 
         .editorial-row {
@@ -279,68 +470,46 @@
             margin-bottom: 60px; position: relative; z-index: 2;
         }
         .editorial-row:last-child { margin-bottom: 0; }
-
         .editorial-text {
             background: var(--c-dark-olive); padding: 40px; border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 2; border: 1px solid rgba(255,255,255,0.06);
             margin-right: -40px;
         }
-        .editorial-text h3 {
-            font-size: 26px; font-weight: 700; color: var(--c-white); margin: 0 0 16px; line-height: 1.2;
-        }
-        .editorial-text p {
-            font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.8); margin: 0;
-        }
+        .editorial-text h3 { font-size: 26px; font-weight: 700; color: var(--c-white); margin: 0 0 16px; line-height: 1.2; }
+        .editorial-text p { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.8); margin: 0; }
         .editorial-text strong { color: var(--c-citron); }
-
         .editorial-image {
-            height: 350px; background: var(--c-army-green); border-radius: 20px; z-index: 1;
+            height: 350px; border-radius: 20px; z-index: 1;
             box-shadow: inset 0 0 30px rgba(0,0,0,0.4); overflow: hidden; position: relative;
         }
         .img-abstract-1 { background: linear-gradient(45deg, var(--c-army-green), var(--c-grasshopper)); }
         .img-abstract-2 { background: linear-gradient(135deg, var(--c-caput), var(--c-seal-brown)); }
-
         .editorial-row.reverse .editorial-text { margin-right: 0; margin-left: -40px; z-index: 2; }
-        .editorial-row.reverse .editorial-image { z-index: 1; }
 
-        /* ===== TECNOLOGÍA (Dark Flow) ===== */
+        /* ===== TECNOLOGÍA ===== */
         .tech-section { background: var(--c-dark-olive); position: relative; }
         .tech-section .section-title { color: var(--c-sandstorm); }
-
-        .tech-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; position: relative; z-index: 2;
-        }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; position: relative; z-index: 2; }
         .tech-card {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(181, 166, 66, 0.2);
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(181,166,66,0.2);
             border-radius: 16px; padding: 40px 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             transition: all 0.4s ease;
         }
-        .tech-card:hover {
-            transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); border-color: rgba(181, 166, 66, 0.5); background: rgba(255, 255, 255, 0.05);
-        }
-        .tech-card h3 {
-            font-size: 22px; font-weight: 700; color: var(--c-sandstorm); margin: 0 0 20px;
-        }
+        .tech-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,0,0,0.4); border-color: rgba(181,166,66,0.5); background: rgba(255,255,255,0.05); }
+        .tech-card h3 { font-size: 22px; font-weight: 700; color: var(--c-sandstorm); margin: 0 0 20px; }
         .tech-card ul { padding: 0; margin: 0; list-style: none; }
-        .tech-card ul li {
-            font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.85); margin-bottom: 12px;
-            position: relative; padding-left: 22px;
-        }
-        .tech-card ul li::before {
-            content: '✦'; position: absolute; left: 0; color: var(--c-citron); font-size: 14px; top: 2px;
-        }
+        .tech-card ul li { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.85); margin-bottom: 12px; position: relative; padding-left: 22px; }
+        .tech-card ul li::before { content: '✦'; position: absolute; left: 0; color: var(--c-citron); font-size: 14px; top: 2px; }
 
-        /* ===== CTA (Compact Gradient) ===== */
+        /* ===== CTA ===== */
         .cta-section {
             padding: 80px 22px; text-align: center;
             background: linear-gradient(135deg, var(--c-grasshopper) 0%, var(--c-army-green) 100%);
-            color: #fff;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #fff; border-top: 1px solid rgba(255,255,255,0.1);
         }
         .cta-content { max-width: 700px; margin: 0 auto; }
         .cta-section h2 { font-size: clamp(28px, 4vw, 36px); font-weight: 700; margin: 0 0 16px; line-height: 1.1; }
-        .cta-section p { font-size: 16px; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0 auto 30px; }
-
+        .cta-section p { font-size: 16px; color: rgba(255,255,255,0.9); line-height: 1.6; margin: 0 auto 30px; }
         .btn-secondary {
             display: inline-block; background: transparent; border: 2px solid #fff; color: #fff;
             font-size: 16px; font-weight: 600; padding: 12px 28px; border-radius: 50px; text-decoration: none;
@@ -349,11 +518,10 @@
         .btn-secondary:hover { background: #fff; color: var(--c-army-green); transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
         /* ===== SCROLL ANIMATIONS ===== */
-        .slide-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .slide-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .slide-right { opacity: 0; transform: translateX(30px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-        .fade-in { opacity: 0; transform: scale(0.95); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-
+        .slide-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.25,1,0.5,1), transform 0.8s cubic-bezier(0.25,1,0.5,1); }
+        .slide-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s cubic-bezier(0.25,1,0.5,1), transform 0.8s cubic-bezier(0.25,1,0.5,1); }
+        .slide-right { opacity: 0; transform: translateX(30px); transition: opacity 0.8s cubic-bezier(0.25,1,0.5,1), transform 0.8s cubic-bezier(0.25,1,0.5,1); }
+        .fade-in { opacity: 0; transform: scale(0.95); transition: opacity 0.8s cubic-bezier(0.25,1,0.5,1), transform 0.8s cubic-bezier(0.25,1,0.5,1); }
         .slide-up.visible, .slide-left.visible, .slide-right.visible, .fade-in.visible { opacity: 1; transform: translate(0) scale(1); }
         .delay-200 { transition-delay: 0.1s; }
         .delay-400 { transition-delay: 0.2s; }
@@ -363,6 +531,23 @@
             .editorial-row, .editorial-row.reverse { grid-template-columns: 1fr; margin-bottom: 50px; }
             .editorial-text, .editorial-row.reverse .editorial-text { margin: -30px 15px 0; padding: 30px; position: relative; z-index: 2; }
             .editorial-image { height: 250px; border-radius: 16px; }
+
+            .strip-layout { grid-template-columns: 1fr; }
+            .strip-sidebar {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                padding: 24px 24px 20px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 16px;
+            }
+            .strip-sidebar-title { font-size: 22px; margin: 0; flex: 1 1 auto; }
+            .strip-sidebar-sub { display: none; }
+            .strip-nav { margin-top: 0; }
+            .strip-viewport { padding: 16px 0 24px; }
+            .strip-card { flex: 0 0 calc(85vw - 48px); height: 240px; }
+            .strip-header { padding: 28px 24px 0; }
         }
 
         @media (max-width: 768px) {
@@ -370,23 +555,14 @@
             .menu-icon { display: block; }
             .navbar {
                 position: fixed; top: 0; right: -100%; left: auto; transform: none; width: 260px; height: 100vh;
-                background: rgba(28, 28, 30, 0.97); backdrop-filter: blur(20px); flex-direction: column; justify-content: center;
-                transition: right 0.4s cubic-bezier(0.65, 0, 0.35, 1); z-index: 9998; display: flex;
+                background: rgba(28,28,30,0.97); backdrop-filter: blur(20px); flex-direction: column; justify-content: center;
+                transition: right 0.4s cubic-bezier(0.65,0,0.35,1); z-index: 9998; display: flex;
             }
             .navbar ul { flex-direction: column; gap: 8px; text-align: center; }
             .navbar a { color: #f5f5f7; font-size: 17px; padding: 12px 30px; opacity: 0.86; }
             #menu-toggle:checked ~ .navbar { right: 0; }
-            .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 9997; }
+            .menu-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 9997; }
             #menu-toggle:checked ~ .menu-overlay { display: block; }
-            
-            .slider-container { height: 450px; border-radius: 16px; border: none; }
-            .slider-container .slide .item { width: 140px; height: 200px; border-radius: 12px; }
-            .slide .item:nth-child(3) { left: 50%; transform: translateX(-50%); }
-            .slide .item:nth-child(4) { left: calc(50% + 150px); }
-            .slide .item:nth-child(5) { left: calc(50% + 300px); }
-            .slide .item:nth-child(n + 6) { left: calc(50% + 450px); }
-            .item .content { left: 20px; width: calc(100% - 40px); }
-            .content .name { font-size: 32px; }
             .tree-container { display: none; }
         }
     </style>
@@ -397,7 +573,7 @@
     <div class="menu-container">
         <div class="menu">
             <a href="index.html" class="logo-img">
-                <img src="img/logo.png" alt="Life Bracelet Logo" class="logo-icon"/>
+                <img src="img/logo.png" alt="Agrivoltaica Logo" />
             </a>
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle">
@@ -415,10 +591,9 @@
         </div>
     </div>
 
-    <!-- HERO SECTION (Pantalla Completa) -->
+    <!-- HERO SECTION -->
     <header class="header">
         <div class="header-banner-container fade-in">
-            <!-- Árboles Animados Originales -->
             <div class="tree-container tree-left">
                 <svg viewBox="0 0 100 200" preserveAspectRatio="none" width="100%" height="100%">
                     <rect x="45" y="150" width="10" height="50" fill="#321414" />
@@ -460,60 +635,86 @@
         </div>
     </header>
 
-    <!-- NOVEDADES (Oscuro, Compacto, Centrado) -->
-    <section class="carousel-section">
-        <h2 class="section-title slide-up">Novedades</h2>
-        <div class="slider-container slide-up delay-200">
-            <div class="slide">
-                <div class="item" style="background-image: url('img/nuevainter.png');">
-                    <div class="content">
-                        <div class="name">Interfáz</div>
-                        <div class="des">Tenemos nueva interfáz</div>
-                        <a href="novedades.html"><button>Ver Ahora</button></a>
-                    </div>
-                </div>
+    <!-- ===================================================
+         NOVEDADES — SECCIÓN EDITORIAL STRIP
+         =================================================== -->
+    <section class="novedades-strip slide-up">
 
-                <div class="item" style="background-image: url('img/iron.png');">
-                    <div class="content">
-                        <div class="name">Avances</div>
-                        <div class="des">Entrega 3er corte</div>
-                        <a href="novedades.html"><button>Ver Ahora</button></a>
-                    </div>
-                </div>
+        <!-- Encabezado superior -->
+        <div class="strip-header">
+            <div class="strip-label">
+                <div class="strip-label-line"></div>
+                <span class="strip-label-text">Novedades</span>
+            </div>
+            <span class="strip-counter" id="stripCounter">01 / 03</span>
+        </div>
 
-                <div class="item" style="background-image: url('img/pagsp.png');">
-                    <div class="content">
-                        <div class="name">Migración</div>
-                        <div class="des">Migramos de Arduino1</div>
-                        <a href=""><button>Ver Ahora</button></a>
-                    </div>
-                </div>
-                
-                <div class="item" style="background-image: url('img/nuevainter.png');">
-                    <div class="content">
-                        <div class="name">Interfáz</div>
-                        <div class="des">Tenemos nueva interfáz</div>
-                        <a href="novedades.html"><button>Ver Ahora</button></a>
-                    </div>
-                </div>
+        <!-- Layout 2 columnas -->
+        <div class="strip-layout">
 
-                <div class="item" style="background-image: url('img/iron.png');">
-                    <div class="content">
-                        <div class="name">Avances</div>
-                        <div class="des">Entrega 3er corte</div>
-                        <a href="novedades.html"><button>Ver Ahora</button></a>
+            <!-- Sidebar editorial izquierdo -->
+            <div class="strip-sidebar">
+                <div>
+                    <h2 class="strip-sidebar-title">Últimas<br>actualizaciones</h2>
+                    <p class="strip-sidebar-sub">Seguimiento de los avances más recientes en hardware, interfaz y conectividad del proyecto.</p>
+                </div>
+                <div class="strip-nav">
+                    <div class="strip-dots" id="stripDots">
+                        <div class="strip-dot active" data-index="0"></div>
+                        <div class="strip-dot" data-index="1"></div>
+                        <div class="strip-dot" data-index="2"></div>
                     </div>
+                    <button class="strip-arrow" id="stripPrev" aria-label="Anterior">&#8592;</button>
+                    <button class="strip-arrow" id="stripNext" aria-label="Siguiente">&#8594;</button>
                 </div>
             </div>
-            
-            <div class="slider-controls">
-                <button class="prev">◁</button>
-                <button class="next">▷</button>
+
+            <!-- Viewport del carrusel -->
+            <div class="strip-viewport" id="stripViewport">
+                <div class="strip-track" id="stripTrack">
+
+                    <!-- Tarjeta 1 -->
+                    <div class="strip-card">
+                        <div class="strip-card-img" style="background-image: url('img/nuevainter.png');"></div>
+                        <div class="strip-card-overlay"></div>
+                        <div class="strip-card-body">
+                            <span class="strip-card-tag">Diseño · 10/11/2025</span>
+                            <h3 class="strip-card-title">Nueva Interfaz de Usuario</h3>
+                            <p class="strip-card-desc">Rediseño completo de la aplicación móvil, mejorando la lectura de métricas y el acceso a funciones clave.</p>
+                            <a href="novedades.html" class="strip-card-cta">Ver Ahora <span class="strip-card-cta-arrow">→</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="strip-card">
+                        <div class="strip-card-img" style="background-image: url('img/iron.png');"></div>
+                        <div class="strip-card-overlay"></div>
+                        <div class="strip-card-body">
+                            <span class="strip-card-tag">Hardware · 10/11/2025</span>
+                            <h3 class="strip-card-title">Avances — 3er Corte</h3>
+                            <p class="strip-card-desc">Integración del módulo de medición de potencia con ESP32 y primeras pruebas de transmisión WiFi.</p>
+                            <a href="novedades.html" class="strip-card-cta">Ver Ahora <span class="strip-card-cta-arrow">→</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="strip-card">
+                        <div class="strip-card-img" style="background-image: url('img/pagsp.png');"></div>
+                        <div class="strip-card-overlay"></div>
+                        <div class="strip-card-body">
+                            <span class="strip-card-tag">Tecnología · 05/11/2025</span>
+                            <h3 class="strip-card-title">Migración a ESP32</h3>
+                            <p class="strip-card-desc">Completada la migración desde Arduino, habilitando conectividad WiFi integrada para datos en tiempo real.</p>
+                            <a href="novedades.html" class="strip-card-cta">Ver Ahora <span class="strip-card-cta-arrow">→</span></a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PROYECTO (Flujo Terrenal Oscuro con Efecto Cristal) -->
+    <!-- PROYECTO -->
     <section id="proyecto" class="section-padding bg-dark-orbs">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -526,20 +727,20 @@
                     <p>Validar la viabilidad y eficiencia de la energía fotovoltaica en entornos agrícolas (como invernaderos) mediante la medición precisa de datos eléctricos, promoviendo la sostenibilidad.</p>
                 </div>
                 <div class="card-clean slide-up delay-200">
-                    <span class="card-icon">🧓🏼</span>
+                    <span class="card-icon">🏭</span>
                     <h3>El Problema</h3>
                     <p>La dependencia de fuentes de energía tradicionales y contaminantes en el campo. Los sistemas agrícolas, como los invernaderos, requieren energía constante para riego, iluminación y control climático, lo que eleva los costos y el impacto ambiental.</p>
                 </div>
                 <div class="card-clean slide-up delay-400">
-                    <span class="card-icon">🩺</span>
+                    <span class="card-icon">☀️</span>
                     <h3>La Solución</h3>
                     <p>Implementar sistemas solares (On-Grid u Off-Grid) equipados con microcontroladores que monitorean el voltaje y la potencia generada, permitiendo automatizar funciones agrícolas con energía 100% limpia.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- CARACTERÍSTICAS (Layout Editorial Superpuesto) -->
+
+    <!-- CARACTERÍSTICAS -->
     <section id="features" class="section-padding features-editorial">
         <div class="container">
             <h2 class="section-title slide-up">Características Clave</h2>
@@ -551,7 +752,7 @@
                 </div>
                 <div class="editorial-image img-abstract-1"></div>
             </div>
-            
+
             <div class="editorial-row reverse slide-right">
                 <div class="editorial-image img-abstract-2"></div>
                 <div class="editorial-text">
@@ -562,7 +763,7 @@
         </div>
     </section>
 
-    <!-- TECNOLOGÍA (Flujo Terrenal) -->
+    <!-- TECNOLOGÍA -->
     <section id="tecnologia" class="section-padding tech-section">
         <div class="container">
             <h2 class="section-title slide-up">🧠 Tecnología e Innovación</h2>
@@ -589,7 +790,7 @@
         </div>
     </section>
 
-    <!-- CTA (Gradient Compacto) -->
+    <!-- CTA -->
     <section class="cta-section">
         <div class="cta-content fade-in">
             <h2>¿Quieres saber más sobre nuestra fase de validación?</h2>
@@ -599,50 +800,154 @@
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Intersection Observer para Animaciones al hacer Scroll
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in').forEach(el => {
-                observer.observe(el);
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* ---- Intersection Observer (scroll animations) ---- */
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.12 });
+
+        document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        /* ---- Menú móvil ---- */
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', () => { menuToggle.checked = false; });
+        }
+
+        /* ================================================================
+           CARRUSEL EDITORIAL — lógica limpia sin transforms en imágenes
+           ================================================================ */
+        const track       = document.getElementById('stripTrack');
+        const viewport    = document.getElementById('stripViewport');
+        const dots        = document.querySelectorAll('.strip-dot');
+        const counter     = document.getElementById('stripCounter');
+        const prevBtn     = document.getElementById('stripPrev');
+        const nextBtn     = document.getElementById('stripNext');
+        const cards       = document.querySelectorAll('.strip-card');
+
+        if (!track || cards.length === 0) return;
+
+        const TOTAL       = cards.length;
+        const VISIBLE     = 2;   // Tarjetas visibles a la vez en desktop
+        const MAX_INDEX   = TOTAL - VISIBLE; // índice máximo de desplazamiento
+        let current       = 0;
+        let autoTimer     = null;
+        let isAnimating   = false;
+
+        /* Calcula el ancho de desplazamiento basado en la primera tarjeta */
+        function getCardWidth() {
+            const card = cards[0];
+            const gap  = 24; // igual al margin-right en CSS
+            return card.offsetWidth + gap;
+        }
+
+        /* Aplica el translate al track */
+        function goTo(index, animate = true) {
+            if (isAnimating && animate) return;
+
+            /* Clamp */
+            index = Math.max(0, Math.min(index, MAX_INDEX));
+            current = index;
+
+            const offset = -(current * getCardWidth());
+
+            if (animate) {
+                isAnimating = true;
+                track.style.transition = 'transform 0.65s cubic-bezier(0.77, 0, 0.175, 1)';
+                track.addEventListener('transitionend', () => { isAnimating = false; }, { once: true });
+            } else {
+                track.style.transition = 'none';
+            }
+
+            track.style.transform = `translateX(${offset}px)`;
+
+            /* Actualiza dots */
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === current);
             });
 
-            // Lógica del Carrusel Infinito
-            let nextBtn = document.querySelector(".next");
-            let prevBtn = document.querySelector(".prev");
+            /* Actualiza contador */
+            const display = String(current + 1).padStart(2, '0');
+            const total   = String(TOTAL).padStart(2, '0');
+            counter.textContent = `${display} / ${total}`;
 
-            if (nextBtn && prevBtn) {
-                nextBtn.addEventListener("click", function () {
-                    let items = document.querySelectorAll(".item");
-                    document.querySelector(".slide").appendChild(items[0]);
-                });
+            /* Estado de flechas */
+            prevBtn.style.opacity = current === 0       ? '0.3' : '1';
+            nextBtn.style.opacity = current >= MAX_INDEX ? '0.3' : '1';
+        }
 
-                prevBtn.addEventListener("click", function () {
-                    let items = document.querySelectorAll(".item");
-                    document.querySelector(".slide").prepend(items[items.length - 1]);
-                });
-            }
-            
-            // Cierre del Menú en Mobile
-            const menuToggle = document.getElementById('menu-toggle');
-            const menuOverlay = document.querySelector('.menu-overlay');
-            if (menuOverlay) {
-                menuOverlay.addEventListener('click', () => {
-                    menuToggle.checked = false;
-                });
+        /* Inicializa sin animación */
+        goTo(0, false);
+
+        /* Flechas */
+        nextBtn.addEventListener('click', () => {
+            const next = current >= MAX_INDEX ? 0 : current + 1;
+            goTo(next);
+            resetAuto();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const prev = current <= 0 ? MAX_INDEX : current - 1;
+            goTo(prev);
+            resetAuto();
+        });
+
+        /* Dots */
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const idx = parseInt(dot.dataset.index);
+                goTo(Math.min(idx, MAX_INDEX));
+                resetAuto();
+            });
+        });
+
+        /* Autoplay suave cada 5 s */
+        function startAuto() {
+            autoTimer = setInterval(() => {
+                const next = current >= MAX_INDEX ? 0 : current + 1;
+                goTo(next);
+            }, 5000);
+        }
+
+        function resetAuto() {
+            clearInterval(autoTimer);
+            startAuto();
+        }
+
+        startAuto();
+
+        /* Pausa en hover */
+        viewport.addEventListener('mouseenter', () => clearInterval(autoTimer));
+        viewport.addEventListener('mouseleave', () => startAuto());
+
+        /* Swipe táctil */
+        let touchStartX = 0;
+        viewport.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        viewport.addEventListener('touchend', e => {
+            const delta = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(delta) > 40) {
+                delta > 0 ? goTo(current + 1) : goTo(current - 1);
+                resetAuto();
             }
         });
+
+        /* Recalcula al redimensionar (sin animación) */
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { goTo(current, false); }, 150);
+        });
+
+    });
     </script>
 </body>
 </html>
