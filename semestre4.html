@@ -138,13 +138,13 @@
         .evolution-card p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
         /* Timeline Flow */
-        .timeline { position: relative; max-width: 1000px; margin: 0 auto; z-index: 2; }
+        .timeline { position: relative; max-width: 1100px; margin: 0 auto; z-index: 2; }
         .timeline::after {
             content: ''; position: absolute; width: 2px; background: rgba(236, 213, 64, 0.3);
             top: 0; bottom: 0; left: 50%; margin-left: -1px; z-index: 1;
         }
 
-        .timeline-item { padding: 10px 40px; position: relative; background: inherit; width: 50%; box-sizing: border-box; margin-bottom: 60px; }
+        .timeline-item { padding: 10px 28px; position: relative; background: inherit; width: 50%; box-sizing: border-box; margin-bottom: 36px; }
         .timeline-item::after {
             content: '✦'; position: absolute; width: 40px; height: 40px; right: -20px; background: var(--c-seal-brown);
             border: 2px solid var(--c-sandstorm); top: 15px; border-radius: 50%; z-index: 2;
@@ -156,7 +156,7 @@
         .right::after { left: -20px; }
 
         .timeline-content {
-            padding: 40px; background: rgba(0, 0, 0, 0.2); border-radius: 20px;
+            padding: 28px; background: rgba(0, 0, 0, 0.2); border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             position: relative; transition: all 0.4s ease;
         }
@@ -178,7 +178,7 @@
 
         /* Image Placeholders (Hologram style) */
         .image-placeholder {
-            width: 100%; height: 220px; border: 2px dashed rgba(236, 213, 64, 0.4);
+            width: 100%; height: 190px; border: 2px dashed rgba(236, 213, 64, 0.4);
             border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;
             background: linear-gradient(45deg, rgba(60, 52, 31, 0.5), rgba(75, 83, 32, 0.3));
             position: relative; overflow: hidden; transition: all 0.3s ease;
@@ -247,6 +247,90 @@
         .spec-card h4 { font-size: 20px; color: var(--c-white); margin: 0 0 15px; }
         .spec-card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
 
+        /* ===== BENTO APPLE-STYLE (NUEVO) ===== */
+        .bento-section {
+            background: var(--c-dark-olive);
+            padding: 90px 22px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 15% 20%, rgba(236, 213, 64, 0.10) 0%, transparent 45%),
+                        radial-gradient(circle at 85% 80%, rgba(122, 114, 41, 0.14) 0%, transparent 45%);
+            pointer-events: none;
+        }
+        .bento-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 18px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        .bento-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-top: 1px solid rgba(236, 213, 64, 0.25);
+            border-radius: 22px;
+            padding: 28px 26px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(236, 213, 64, 0.45);
+            box-shadow: 0 24px 52px rgba(0,0,0,0.45);
+        }
+        .bento-card h3 {
+            margin: 0 0 12px;
+            font-size: 24px;
+            color: var(--c-sandstorm);
+            letter-spacing: -0.02em;
+        }
+        .bento-card h4 {
+            margin: 0 0 10px;
+            font-size: 17px;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+        .bento-card p, .bento-card li {
+            color: rgba(255,255,255,0.86);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 10px;
+        }
+        .bento-card ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .bento-kicker {
+            display: inline-block;
+            margin-bottom: 14px;
+            background: rgba(236, 213, 64, 0.18);
+            border: 1px solid rgba(236, 213, 64, 0.35);
+            color: var(--c-citron);
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .bento-1 { grid-column: span 7; }
+        .bento-2 { grid-column: span 5; }
+        .bento-3 { grid-column: span 4; }
+        .bento-4 { grid-column: span 4; }
+        .bento-5 { grid-column: span 4; }
+        .bento-6 { grid-column: span 12; }
+
         /* ===== CTA FOOTER ===== */
         .cta-section {
             padding: 80px 22px; text-align: center;
@@ -285,7 +369,7 @@
             #menu-toggle:checked ~ .navbar { right: 0; }
             
             .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 80px; padding-right: 0; text-align: left; }
+            .timeline-item { width: 100%; padding-left: 80px; padding-right: 0; text-align: left; margin-bottom: 28px; }
             .timeline-item::after { left: 11px; right: auto; }
             .right { left: 0; }
             .left .tech-list { text-align: left; }
@@ -295,6 +379,8 @@
             .pdf-card { flex-direction: column; text-align: center; padding: 30px 20px; }
             .evolution-card { padding: 30px 20px; }
             .tree-container { display: none; }
+
+            .bento-1, .bento-2, .bento-3, .bento-4, .bento-5, .bento-6 { grid-column: span 12; }
         }
     </style>
 </head>
@@ -538,6 +624,74 @@
                     <h4>Divisor de Tensión</h4>
                     <p>Escalamiento de la señal de 20V a 3.3V para monitoreo (no alimentación).</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6.1 BENTO APPLE-STYLE (NUEVO) -->
+    <section class="bento-section">
+        <div class="container">
+            <h2 class="section-title slide-up">🧩 Arquitectura Integral del Sistema</h2>
+            <div class="bento-grid">
+
+                <article class="bento-card bento-1 slide-up">
+                    <span class="bento-kicker">Infraestructura</span>
+                    <h3>Infraestructura de Hardware y Software</h3>
+                    <h4>Hardware Principal</h4>
+                    <p>Se utiliza el microcontrolador ESP32, destacado por su arquitectura Dual Core y conectividad WiFi integrada, lo que permite tanto el procesamiento de señales como el envío de datos en tiempo real.</p>
+                    <h4>Gestión de Energía</h4>
+                    <p>Se implementa el módulo LM2596 (Buck Converter) para regular eficientemente el voltaje de entrada.</p>
+                    <h4>Infraestructura de Software</h4>
+                    <p><strong>Programación:</strong> El microcontrolador es programado para realizar lecturas analógicas y gestionar la transmisión de información.</p>
+                    <p><strong>Almacenamiento:</strong> Se utiliza una base de datos estructurada para alojar los registros históricos junto con sus respectivas marcas de tiempo (timestamps).</p>
+                </article>
+
+                <article class="bento-card bento-2 slide-up delay-100">
+                    <span class="bento-kicker">Sensores</span>
+                    <h3>Instrumentación y Sensores</h3>
+                    <p><strong>Sensor de Voltaje:</strong> El sistema actúa como un nodo sensor que utiliza un divisor de tensión para escalar la señal de 20V a un rango manejable de 3.3V, permitiendo que el ESP32 realice la lectura analógica de forma segura.</p>
+                    <p><strong>Instrumentación de Referencia:</strong> Se emplearon mediciones manuales con multímetro para establecer la línea base de generación y validar los resultados del sistema automatizado.</p>
+                    <p><strong>Análisis Técnico:</strong> Se incluye la investigación de fichas técnicas y el rendimiento de las celdas solares bajo condiciones controladas en invernaderos.</p>
+                </article>
+
+                <article class="bento-card bento-3 slide-up delay-100">
+                    <span class="bento-kicker">Potencia</span>
+                    <h3>Elementos de Potencia</h3>
+                    <ul>
+                        <li><strong>Fuente de Energía:</strong> Un panel solar fotovoltaico que genera voltajes de salida entre 19.2V y 20.5V durante picos de radiación solar.</li>
+                        <li><strong>Regulación Step-Down:</strong> Se utiliza el LM2596 para convertir el excedente de energía del panel en un voltaje estable para el microcontrolador, aprovechando su alta resistencia a picos de tensión en entornos industriales o rurales.</li>
+                        <li><strong>Sistemas de Protección:</strong> Se han integrado diodos de protección para prevenir corrientes de retorno que podrían dañar el panel solar.</li>
+                    </ul>
+                </article>
+
+                <article class="bento-card bento-4 slide-up delay-200">
+                    <span class="bento-kicker">Automatización</span>
+                    <h3>Conceptos de PLC</h3>
+                    <p>Aunque el sistema utiliza un ESP32, los principios de automatización industrial aplicados reflejan conceptos clave de un PLC:</p>
+                    <ul>
+                        <li><strong>Ciclo de Escaneo (Scan Cycle):</strong> Al igual que un PLC, el sistema realiza una adquisición de datos cíclica, leyendo entradas analógicas y ejecutando una lógica de transmisión de datos.</li>
+                        <li><strong>Modularidad y Robustez:</strong> La elección del regulador LM2596 se justifica por su robustez industrial, un requisito crítico en los PLC para operar de manera confiable en entornos con ruido eléctrico o variaciones de tensión.</li>
+                        <li><strong>Gestión de Entradas/Salidas (I/O):</strong> La fase de diseño incluye la adaptación de señales (escalamiento) para que el procesador pueda interpretar variables del mundo real, un proceso análogo a la configuración de módulos de entrada analógica en un PLC.</li>
+                    </ul>
+                </article>
+
+                <article class="bento-card bento-5 slide-up delay-300">
+                    <span class="bento-kicker">Conectividad</span>
+                    <h3>Paradigma IoT</h3>
+                    <p>El proyecto implementa las tres capas fundamentales del modelo IoT:</p>
+                    <ul>
+                        <li><strong>Capa de Percepción:</strong> Representada por el nodo sensor (ESP32 y circuito de medición) que captura el estado físico del panel solar.</li>
+                        <li><strong>Capa de Red:</strong> El uso de conectividad WiFi permite que los datos no se queden aislados en el dispositivo, sino que viajen hacia un sistema centralizado.</li>
+                        <li><strong>Capa de Aplicación:</strong> El almacenamiento en una base de datos y el posterior análisis de registros históricos permiten evaluar la eficiencia energética y determinar futuras aplicaciones, como el riego automatizado o la ventilación en el invernadero.</li>
+                    </ul>
+                </article>
+
+                <article class="bento-card bento-6 slide-up delay-300">
+                    <span class="bento-kicker">Resumen Ejecutivo</span>
+                    <h3>Convergencia Tecnológica para Automatización Rural</h3>
+                    <p>La solución integra electrónica de potencia, sensórica analógica, procesamiento embebido, conectividad IoT y lógica de automatización inspirada en PLC para construir una plataforma robusta y escalable orientada al monitoreo energético en entornos agrícolas.</p>
+                </article>
+
             </div>
         </div>
     </section>
