@@ -6,7 +6,6 @@
     <title>Cuarto Semestre - Agrivoltaica</title>
     <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* ===== GLOBAL PALETTE & DESIGN SYSTEM (Preservado de index.html) ===== */
         :root {
             --c-seal-brown: #321414;
             --c-army-green: #4B5320;
@@ -115,7 +114,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
-        /* Floating Orbs for Ambience */
         .orb { position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; opacity: 0.3; animation: floatOrb 12s infinite alternate ease-in-out; pointer-events: none; }
         .orb-1 { width: 400px; height: 400px; background: var(--c-army-green); top: 10%; left: -100px; }
         .orb-2 { width: 500px; height: 500px; background: var(--c-grasshopper); bottom: 20%; right: -150px; animation-delay: -6s; }
@@ -137,219 +135,288 @@
         .evolution-card h4 { color: var(--c-sandstorm); font-size: 18px; font-weight: 500; margin: 0 0 25px; letter-spacing: 1px; text-transform: uppercase; }
         .evolution-card p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
-        /* ===== VERTICAL CARD TIMELINE (NUEVO DISEÑO) ===== */
-        .vertical-timeline {
+        /* ===== CORTES — NUEVO LAYOUT FULL-WIDTH ===== */
+        .cortes-section {
             position: relative;
-            max-width: 900px;
-            margin: 0 auto;
             z-index: 2;
+            margin-top: 20px;
+        }
+
+        /* Cada corte ocupa el ancho completo y alterna imagen/texto */
+        .corte-block {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(236, 213, 64, 0.15);
+            border-radius: 28px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .corte-block:hover {
+            box-shadow: 0 30px 65px rgba(0,0,0,0.45);
+            border-color: rgba(236, 213, 64, 0.35);
+        }
+
+        /* Cabecera del bloque */
+        .corte-header {
             display: flex;
-            flex-direction: column;
-            gap: 40px;
+            align-items: center;
+            gap: 22px;
+            padding: 36px 44px 0;
+            border-bottom: 1px solid rgba(236, 213, 64, 0.12);
+            padding-bottom: 28px;
         }
-
-        .vertical-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, rgba(236, 213, 64, 0.8) 0%, rgba(236, 213, 64, 0.3) 50%, rgba(236, 213, 64, 0.1) 100%);
-            transform: translateX(-50%);
-            z-index: 0;
-        }
-
-        .timeline-card {
-            position: relative;
-            width: 48%;
-            z-index: 1;
-        }
-
-        .timeline-card.left {
-            margin-left: 0;
-            margin-right: auto;
-            text-align: right;
-            padding-right: 60px;
-        }
-
-        .timeline-card.right {
-            margin-left: auto;
-            margin-right: 0;
-            text-align: left;
-            padding-left: 60px;
-        }
-
-        .timeline-card::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--c-seal-brown);
-            border: 4px solid var(--c-sandstorm);
+        .corte-number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            background: rgba(236, 213, 64, 0.12);
+            border: 2px solid var(--c-sandstorm);
             border-radius: 50%;
-            top: 30px;
-            z-index: 2;
-            box-shadow: 0 0 20px rgba(236, 213, 64, 0.6);
-        }
-
-        .timeline-card.left::before {
-            right: -41px;
-        }
-
-        .timeline-card.right::before {
-            left: -41px;
-        }
-
-        .timeline-card-content {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-top: 2px solid rgba(236, 213, 64, 0.4);
-            border-radius: 20px;
-            padding: 35px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-        }
-
-        .timeline-card-content:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(236, 213, 64, 0.6);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .corte-badge-new {
-            display: inline-block;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-            background: rgba(236, 213, 64, 0.2);
-            border: 1px solid rgba(236, 213, 64, 0.4);
-            color: var(--c-citron);
-        }
-
-        .corte-badge-new.corte1 {
-            background: rgba(122, 114, 41, 0.3);
-            border-color: rgba(122, 114, 41, 0.6);
-            color: var(--c-grasshopper);
-        }
-
-        .corte-badge-new.corte2 {
-            background: rgba(236, 213, 64, 0.25);
-            border-color: rgba(236, 213, 64, 0.5);
+            font-size: 24px;
+            font-weight: 800;
             color: var(--c-sandstorm);
+            box-shadow: 0 0 18px rgba(236, 213, 64, 0.22);
         }
-
-        .corte-badge-new.corte3 {
-            background: rgba(221, 208, 106, 0.2);
-            border-color: rgba(221, 208, 106, 0.5);
-            color: var(--c-citron);
-        }
-
-        .timeline-card-content h3 {
-            font-size: 26px;
+        .corte-header-text h3 {
+            font-size: clamp(20px, 2.5vw, 26px);
             color: var(--c-sandstorm);
-            margin: 0 0 12px;
-            letter-spacing: -0.02em;
+            margin: 0 0 6px;
+            letter-spacing: -0.025em;
+            line-height: 1.25;
         }
-
-        .timeline-card-content .subtitle {
+        .corte-header-text .subtitle {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.45;
         }
 
-        .timeline-card-content p {
+        /* Cuerpo: dos columnas — contenido + imagen(s) */
+        .corte-body {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 0;
+        }
+        .corte-body.reverse {
+            grid-template-columns: 380px 1fr;
+        }
+
+        .corte-content {
+            padding: 36px 44px 42px;
+            border-right: 1px solid rgba(236, 213, 64, 0.1);
+        }
+        .corte-body.reverse .corte-content {
+            border-right: none;
+            border-left: 1px solid rgba(236, 213, 64, 0.1);
+            order: 2;
+        }
+        .corte-body.reverse .corte-media {
+            order: 1;
+        }
+
+        .corte-content p {
             font-size: 15px;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255,255,255,0.82);
             line-height: 1.7;
-            margin-bottom: 18px;
+            margin: 0 0 18px;
         }
-
-        .timeline-card-content .highlight-box {
-            background: rgba(0, 0, 0, 0.25);
-            border-left: 3px solid var(--c-sandstorm);
-            padding: 16px 20px;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .timeline-card-content .highlight-box strong {
+        .corte-content .phase-label {
+            font-size: 13px;
+            font-weight: 700;
             color: var(--c-citron);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 14px;
+            display: block;
         }
-
-        .timeline-tech-list {
+        .corte-tech-list {
             list-style: none;
             padding: 0;
-            margin: 18px 0;
+            margin: 0 0 18px;
         }
-
-        .timeline-tech-list li {
+        .corte-tech-list li {
             position: relative;
-            padding-left: 26px;
-            margin-bottom: 12px;
+            padding-left: 22px;
+            margin-bottom: 11px;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255,255,255,0.78);
             line-height: 1.6;
         }
-
-        .timeline-tech-list li::before {
+        .corte-tech-list li::before {
             content: '▸';
             position: absolute;
             left: 0;
             color: var(--c-citron);
             font-weight: bold;
-            font-size: 18px;
+            font-size: 15px;
+        }
+        .highlight-box {
+            background: rgba(0,0,0,0.28);
+            border-left: 3px solid var(--c-sandstorm);
+            padding: 16px 18px;
+            border-radius: 12px;
+            margin: 18px 0;
+            font-size: 14px;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.65;
+        }
+        .highlight-box strong {
+            color: var(--c-citron);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
         }
 
-        .timeline-card-content .image-placeholder {
-            width: 100%;
-            height: 200px;
-            border: 2px dashed rgba(236, 213, 64, 0.4);
-            border-radius: 16px;
+        /* Área de imágenes lateral */
+        .corte-media {
+            padding: 32px 30px;
             display: flex;
             flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            background: rgba(0,0,0,0.15);
+        }
+        .corte-img-wrap {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(236, 213, 64, 0.25);
+            position: relative;
+            cursor: zoom-in;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .corte-img-wrap:hover {
+            border-color: rgba(236, 213, 64, 0.7);
+            box-shadow: 0 0 0 3px rgba(236, 213, 64, 0.18);
+        }
+        .corte-img-wrap img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.35s ease;
+        }
+        .corte-img-wrap:hover img {
+            transform: scale(1.04);
+        }
+        .corte-img-wrap.tall img {
+            height: 260px;
+        }
+        /* Pista de "clic para ampliar" sobre la imagen */
+        .corte-img-wrap::after {
+            content: '🔍 Clic para ampliar';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.82));
+            color: rgba(255,255,255,0.92);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+            padding: 28px 10px 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .corte-img-wrap:hover::after {
+            opacity: 1;
+        }
+        .img-caption {
+            font-size: 11px;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 8px 10px 6px;
+            background: rgba(0,0,0,0.35);
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             align-items: center;
             justify-content: center;
-            background: linear-gradient(45deg, rgba(60, 52, 31, 0.5), rgba(75, 83, 32, 0.3));
-            position: relative;
+            padding: 20px;
+            cursor: zoom-out;
+        }
+        #lightbox.active {
+            display: flex;
+        }
+        #lightbox-img {
+            max-width: min(1100px, 95vw);
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 14px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+            border: 1px solid rgba(236, 213, 64, 0.3);
+            cursor: default;
+            animation: lbFadeIn 0.3s ease;
+        }
+        @keyframes lbFadeIn {
+            from { opacity: 0; transform: scale(0.93); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        #lightbox-caption {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(236,213,64,0.25);
+            color: rgba(255,255,255,0.88);
+            font-size: 13px;
+            padding: 8px 22px;
+            border-radius: 50px;
+            white-space: nowrap;
+            max-width: 90vw;
             overflow: hidden;
-            transition: all 0.3s ease;
-            margin-top: 20px;
+            text-overflow: ellipsis;
         }
-
-        .timeline-card-content .image-placeholder:hover {
+        #lightbox-close {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+            z-index: 100000;
+        }
+        #lightbox-close:hover {
+            background: rgba(236, 213, 64, 0.3);
             border-color: var(--c-sandstorm);
-            background: linear-gradient(45deg, rgba(60, 52, 31, 0.8), rgba(75, 83, 32, 0.5));
         }
 
-        .timeline-card-content .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* Para corte 3: la media muestra 4 imágenes en grid */
+        .corte-media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
         }
-
-        /* Image Placeholders (Hologram style) */
-        .image-placeholder {
-            width: 100%; height: 190px; border: 2px dashed rgba(236, 213, 64, 0.4);
-            border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(45deg, rgba(60, 52, 31, 0.5), rgba(75, 83, 32, 0.3));
-            position: relative; overflow: hidden; transition: all 0.3s ease;
+        .corte-media-grid .corte-img-wrap img {
+            height: 140px;
         }
-        .image-placeholder:hover { border-color: var(--c-sandstorm); background: linear-gradient(45deg, rgba(60, 52, 31, 0.8), rgba(75, 83, 32, 0.5)); }
-        .image-placeholder span { font-size: 30px; margin-bottom: 10px; }
-        .image-placeholder p { margin: 0; font-size: 12px; font-weight: 600; color: var(--c-citron); text-transform: uppercase; letter-spacing: 1px; text-align: center; padding: 0 15px; }
-        .image-placeholder .caption { position: absolute; bottom: 10px; font-size: 11px; color: rgba(255,255,255,0.5); font-weight: normal; }
 
         /* ===== DOCUMENTATION SECTION ===== */
         .docs-section {
@@ -410,7 +477,7 @@
         .spec-card h4 { font-size: 20px; color: var(--c-white); margin: 0 0 15px; }
         .spec-card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; margin: 0; }
 
-        /* ===== BENTO APPLE-STYLE (NUEVO) ===== */
+        /* ===== BENTO APPLE-STYLE ===== */
         .bento-section {
             background: var(--c-dark-olive);
             padding: 90px 22px;
@@ -519,6 +586,36 @@
         .delay-300 { transition-delay: 0.3s; }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .corte-body,
+            .corte-body.reverse {
+                grid-template-columns: 1fr;
+            }
+            .corte-body.reverse .corte-content,
+            .corte-body.reverse .corte-media {
+                order: unset;
+            }
+            .corte-content {
+                border-right: none;
+                border-left: none;
+                border-bottom: 1px solid rgba(236, 213, 64, 0.1);
+                padding: 28px 24px 30px;
+            }
+            .corte-body.reverse .corte-content {
+                border-left: none;
+                border-bottom: 1px solid rgba(236, 213, 64, 0.1);
+            }
+            .corte-header {
+                padding: 28px 24px 22px;
+            }
+            .corte-media {
+                padding: 24px;
+            }
+            .corte-media-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .menu { padding: 0 16px; }
             .menu-icon { display: block; }
@@ -537,24 +634,11 @@
 
             .bento-1, .bento-2, .bento-3, .bento-4, .bento-5, .bento-6 { grid-column: span 12; }
 
-            /* Timeline Responsive */
-            .vertical-timeline::before {
-                left: 0;
+            .corte-media-grid {
+                grid-template-columns: 1fr;
             }
-
-            .timeline-card {
-                width: 100% !important;
-                padding-left: 60px !important;
-                padding-right: 0 !important;
-                text-align: left !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-
-            .timeline-card.left::before,
-            .timeline-card.right::before {
-                left: -41px !important;
-                right: auto !important;
+            .corte-media-grid .corte-img-wrap img {
+                height: 200px;
             }
         }
     </style>
@@ -585,7 +669,6 @@
     <!-- HERO SECTION -->
     <header class="header">
         <div class="header-banner-container fade-in">
-            <!-- Árboles Animados (Preservados del index) -->
             <div class="tree-container tree-left">
                 <svg viewBox="0 0 100 200" preserveAspectRatio="none" width="100%" height="100%">
                     <rect x="45" y="150" width="10" height="50" fill="#321414" />
@@ -647,101 +730,172 @@
                 <p style="margin-top: 15px;">Migramos hacia el proyecto Agrivoltaica para enfrentar un desafío técnico real: la convergencia entre la electrónica de potencia, el control de procesos y el Internet de las Cosas (IoT). Este cambio nos permite aplicar los pilares de nuestra carrera en una solución sostenible y escalable para el campo.</p>
             </div>
 
-            <!-- NUEVO VERTICAL TIMELINE DISEÑO -->
-            <div class="vertical-timeline">
-                
-                <!-- CORTE 1 -->
-                <div class="timeline-card left slide-left">
-                    <div class="timeline-card-content">
-                        <span class="corte-badge-new corte1">📊 Corte 1</span>
-                        <h3>Investigación y Análisis (Módulo IoT)</h3>
-                        <div class="subtitle">Objetivo: Determinar la viabilidad del sistema y caracterizar la fuente de energía</div>
+            <!-- ===== CORTES — NUEVO LAYOUT ===== -->
+            <div class="cortes-section">
 
-                        <div class="highlight-box">
-                            <strong>🔍 Fase Única Ejecutada: Análisis del Sistema</strong><br/>
-                            En esta etapa inicial del módulo de Internet de las Cosas (IoT), nos centramos exclusivamente en la fase de diagnóstico.
+                <!-- ── CORTE 1 ── -->
+                <div class="corte-block slide-up">
+                    <div class="corte-header">
+                        <div class="corte-number-badge">1</div>
+                        <div class="corte-header-text">
+                            <h3>📊 Investigación y Análisis (Módulo IoT)</h3>
+                            <p class="subtitle"><strong>Objetivo:</strong> Determinar la viabilidad del sistema y caracterizar la fuente de energía.</p>
                         </div>
-
-                        <ul class="timeline-tech-list">
-                            <li><strong>Estudio Fotovoltaico:</strong> Investigación del rendimiento de celdas solares en entornos controlados (invernaderos).</li>
-                            <li><strong>Caracterización Técnica:</strong> Análisis de las fichas técnicas y comportamiento del panel solar seleccionado.</li>
-                            <li><strong>Validación de Campo:</strong> Mediciones manuales con multímetro para establecer la línea base de generación.</li>
-                            <li><strong>Resultados Obtenidos:</strong> Registros estables entre 19.2V y 20.5V durante picos de radiación solar.</li>
-                        </ul>
-
-                        <div class="image-placeholder">
-                            <img src="img/panelsolar1.jpg" alt="Panel Solar en Medición" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="corte-body">
+                        <div class="corte-content">
+                            <span class="phase-label">🔍 Fase Única Ejecutada: Análisis del Sistema</span>
+                            <p>En esta etapa inicial del módulo de Internet de las Cosas (IoT), nos centramos exclusivamente en la fase de diagnóstico:</p>
+                            <ul class="corte-tech-list">
+                                <li><strong>Estudio Fotovoltaico:</strong> Investigación del rendimiento de celdas solares en entornos controlados (invernaderos).</li>
+                                <li><strong>Caracterización Técnica:</strong> Análisis de las fichas técnicas y comportamiento del panel solar seleccionado.</li>
+                                <li><strong>Validación de Campo:</strong> Mediciones manuales con multímetro para establecer la línea base de generación.</li>
+                                <li><strong>Resultados Obtenidos:</strong> Registros estables entre 19.2V y 20.5V durante picos de radiación solar.</li>
+                            </ul>
+                        </div>
+                        <div class="corte-media">
+                            <div class="corte-img-wrap tall">
+                                <img src="img/panelsolar1.jpg" alt="Panel Solar en Medición">
+                                <div class="img-caption">Panel solar — medición inicial de campo</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CORTE 2 -->
-                <div class="timeline-card right slide-right">
-                    <div class="timeline-card-content">
-                        <span class="corte-badge-new corte2">⚙️ Corte 2</span>
-                        <h3>Ingeniería de Hardware y Gestión de Potencia</h3>
-                        <div class="subtitle">Objetivo: Implementación del nodo sensor ESP32 y estabilización de la alimentación</div>
-
-                        <p>Aquí es donde el proyecto cobra vida técnica. Tras el análisis, pasamos a resolver el problema de la alimentación y la captura de datos.</p>
-
-                        <div class="highlight-box">
-                            <strong>Alimentación y Regulación: La Decisión Técnica</strong><br/>
-                            Para alimentar nuestra ESP32 (3.3V) desde la salida del panel (20V), descartamos el uso de un divisor de voltaje resistivo. Aunque es útil para medir señales, para alimentación es ineficiente y peligroso para el microcontrolador, ya que no soporta los picos de corriente del módulo WiFi y desperdicia energía en forma de calor.
+                <!-- ── CORTE 2 ── -->
+                <div class="corte-block slide-up delay-100">
+                    <div class="corte-header">
+                        <div class="corte-number-badge">2</div>
+                        <div class="corte-header-text">
+                            <h3>⚙️ Ingeniería de Hardware y Gestión de Potencia</h3>
+                            <p class="subtitle"><strong>Objetivo:</strong> Implementación del nodo sensor ESP32 y estabilización de la alimentación.</p>
                         </div>
+                    </div>
+                    <div class="corte-body reverse">
+                        <div class="corte-content">
+                            <span class="phase-label">⚡ Implementación Práctica</span>
+                            <p>Aquí es donde el proyecto cobra vida técnica. Tras el análisis, pasamos a resolver el problema de la alimentación y la captura de datos.</p>
+                            
+                            <div class="highlight-box">
+                                <strong>Alimentación y Regulación: La Decisión Técnica</strong>
+                                Para alimentar nuestra ESP32 (3.3V) desde la salida del panel (20V), descartamos el uso de un divisor de voltaje resistivo. Aunque es útil para medir señales, para alimentación es ineficiente y peligroso para el microcontrolador, ya que no soporta los picos de corriente del módulo WiFi y desperdicia energía en forma de calor.
+                            </div>
 
-                        <p><strong>Nuestra Solución: El Módulo LM2596 (Buck Converter)</strong></p>
-                        
-                        <ul class="timeline-tech-list">
-                            <li><strong>Robustez:</strong> A diferencia de reguladores más modernos y frágiles, el LM2596 es altamente resistente a picos de tensión, ideal para un entorno industrial/rural.</li>
-                            <li><strong>Eficiencia Térmica:</strong> Maneja el diferencial de voltaje (de 20V a 5V/3.3V) con una disipación de calor controlada.</li>
-                            <li><strong>Justificación:</strong> Dado que el panel genera un excedente de energía, el consumo mínimo del regulador (quiescent current) es insignificante comparado con la estabilidad y seguridad que brinda a la ESP32.</li>
-                        </ul>
-
-                        <div class="image-placeholder">
-                            <img src="img/panelsolar2.jpeg" alt="Conexión del panel con regulador y ESP32" style="width: 100%; height: 100%; object-fit: cover;">
+                            <p><strong>Nuestra Solución: El Módulo LM2596 (Buck Converter)</strong></p>
+                            <ul class="corte-tech-list">
+                                <li><strong>Robustez:</strong> A diferencia de reguladores más modernos y frágiles, el LM2596 es altamente resistente a picos de tensión, ideal para un entorno industrial/rural.</li>
+                                <li><strong>Eficiencia Térmica:</strong> Maneja el diferencial de voltaje (de 20V a 5V/3.3V) con una disipación de calor controlada.</li>
+                                <li><strong>Justificación:</strong> Dado que el panel genera un excedente de energía, el consumo mínimo del regulador (quiescent current) es insignificante comparado con la estabilidad y seguridad que brinda a la ESP32.</li>
+                            </ul>
+                        </div>
+                        <div class="corte-media">
+                            <div class="corte-img-wrap tall">
+                                <img src="img/panelsolar2.jpeg" alt="Conexión del panel con regulador y ESP32">
+                                <div class="img-caption">Conexión panel → LM2596 → ESP32</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CORTE 3 -->
-                <div class="timeline-card left slide-left">
-                    <div class="timeline-card-content">
-                        <span class="corte-badge-new corte3">📡 Corte 3</span>
-                        <h3>Monitoreo de Alta Precisión y Persistencia de Datos</h3>
-                        <div class="subtitle">Objetivo: Implementar telemetría avanzada y protocolos de comunicación directa para el análisis climático</div>
-
-                        <p>En esta etapa, elevamos la calidad de la captura de datos. Pasamos de mediciones analógicas básicas a instrumentación digital de alta precisión.</p>
-
-                        <div class="highlight-box">
-                            <strong>📈 Implementación del Nodo de Medición: El Sensor INA219</strong><br/>
-                            Integramos el sensor INA219, que permite medir tanto el voltaje como la potencia real del panel a través de un bus I²C. Esto elimina el ruido eléctrico y las imprecisiones de las lecturas analógicas convencionales.
+                <!-- ── CORTE 3 ── -->
+                <div class="corte-block slide-up delay-200">
+                    <div class="corte-header">
+                        <div class="corte-number-badge">3</div>
+                        <div class="corte-header-text">
+                            <h3>📡 Monitoreo de Alta Precisión y Persistencia de Datos</h3>
+                            <p class="subtitle"><strong>Objetivo:</strong> Implementar telemetría avanzada y protocolos de comunicación directa para el análisis climático.</p>
                         </div>
+                    </div>
 
-                        <ul class="timeline-tech-list">
-                            <li><strong>Precisión Digital:</strong> Resolución de 12 bits para mediciones altamente precisas.</li>
-                            <li><strong>Análisis Multiclima:</strong> Base de datos robusta que evalúa cómo afectan variables ambientales (nubosidad, temperatura, humedad) a la eficiencia energética en tiempo real.</li>
-                        </ul>
+                    <!-- Fila A: contenido principal + imagen principal -->
+                    <div class="corte-body">
+                        <div class="corte-content">
+                            <span class="phase-label">📈 Implementación del Nodo de Medición: El Sensor INA219</span>
+                            <p>En esta etapa, elevamos la calidad de la captura de datos. Pasamos de mediciones analógicas básicas a instrumentación digital de alta precisión.</p>
+                            
+                            <ul class="corte-tech-list">
+                                <li><strong>Precisión Digital:</strong> Integramos el sensor INA219, que permite medir tanto el voltaje como la potencia real del panel a través de un bus I²C. Esto elimina el ruido eléctrico y las imprecisiones de las lecturas analógicas convencionales.</li>
+                                <li><strong>Análisis Multiclima:</strong> Gracias a esta precisión, hemos comenzado la construcción de una base de datos robusta. Esta nos permite evaluar cómo afectan las diversas variables ambientales (nubosidad, temperatura, humedad) a la eficiencia energética del sistema en tiempo real.</li>
+                            </ul>
 
-                        <div class="highlight-box">
-                            <strong>📶 Protocolo de Transmisión: ESP-NOW</strong><br/>
-                            <strong>Baja Latencia:</strong> Intercambio de datos entre dos placas ESP32 de forma casi instantánea sin router.<br/>
-                            <strong>Eficiencia Energética:</strong> Optimización del consumo de energía del nodo sensor, permitiendo mayor autonomía con la carga del panel.
+                            <div class="highlight-box">
+                                <strong>📶 Protocolo de Transmisión: ESP-NOW</strong>
+                                <strong>Baja Latencia:</strong> Permite el intercambio de datos entre dos placas ESP32 de forma casi instantánea y sin necesidad de un router intermedio. <strong>Eficiencia Energética:</strong> Al evitar la sobrecarga de una red Wi-Fi tradicional, optimizamos el consumo de energía del nodo sensor, permitiendo una mayor autonomía con la carga del panel solar.
+                            </div>
+
+                            <p style="margin-top: 4px;"><strong>⏭️ Proyección: Hacia la Automatización Industrial (LoRa y PLC)</strong></p>
+                            <ul class="corte-tech-list">
+                                <li><strong>Migración a LoRa:</strong> En las próximas entregas, sustituiremos ESP-NOW por tecnología LoRa (Long Range) para garantizar conectividad en zonas rurales extensas donde el Wi-Fi no tiene alcance.</li>
+                                <li><strong>Validación de Carga Industrial:</strong> El siguiente reto técnico es integrar el sistema con PLC (Controladores Lógicos Programables) y sistemas de neumática. Esto permitirá que la energía capturada no solo se monitoree, sino que ejecute acciones físicas, como la apertura de ventilación o el control de riego automatizado.</li>
+                            </ul>
                         </div>
+                        <div class="corte-media">
+                            <div class="corte-img-wrap tall">
+                                <img src="img/ina219.png" alt="Sistema INA219 y Comunicación ESP-NOW">
+                                <div class="img-caption">Nodo sensor INA219 + ESP-NOW activo</div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <p style="margin-top: 15px;"><strong>⏭️ Proyección: Hacia la Automatización Industrial (LoRa y PLC)</strong></p>
-                        
-                        <ul class="timeline-tech-list">
-                            <li><strong>Migración a LoRa:</strong> Sustituir ESP-NOW por tecnología LoRa (Long Range) para conectividad en zonas rurales extensas donde el Wi-Fi no tiene alcance.</li>
-                            <li><strong>Validación de Carga Industrial:</strong> Integración con PLC (Controladores Lógicos Programables) y sistemas de neumática para ejecutar acciones físicas como ventilación y riego automatizado.</li>
-                        </ul>
+                    <!-- Fila B: evidencias del sistema — 4 imágenes en grid con descripción -->
+                    <div style="padding: 0 44px 44px; border-top: 1px dashed rgba(236,213,64,0.15); margin-top: 0; padding-top: 36px;">
+                        <span class="phase-label" style="display: block; margin-bottom: 22px;">🖥️ Evidencias del Sistema Completo en Funcionamiento</span>
 
-                        <div class="image-placeholder">
-                            <img src="img/panelsolar3.jpg" alt="Sistema INA219 y Comunicación ESP-NOW" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="corte-media-grid">
+
+                            <!-- Evidencia 1 -->
+                            <div>
+                                <div class="corte-img-wrap">
+                                    <img src="img/lecturacmd.jpeg" alt="Monitoreo en tiempo real desde CMD">
+                                    <div class="img-caption">Terminal CMD — flujo de datos en tiempo real</div>
+                                </div>
+                                <div style="margin-top: 14px;">
+                                    <p style="font-size: 13px; font-weight: 700; color: var(--c-citron); margin-bottom: 6px;">1. Monitoreo en Tiempo Real (CMD)</p>
+                                    <p style="font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">Captura de la terminal donde se ejecuta el script de monitoreo. Cada línea muestra la fecha, hora exacta y el estado "Guardado en DB", validando que los valores de voltaje (V) y corriente (mA) capturados por el sensor están siendo procesados y almacenados correctamente en el servidor local sin pérdida de paquetes.</p>
+                                </div>
+                            </div>
+
+                            <!-- Evidencia 2 -->
+                            <div>
+                                <div class="corte-img-wrap">
+                                    <img src="img/localhost.jpeg" alt="phpMyAdmin — base de datos invernadero_db">
+                                    <div class="img-caption">phpMyAdmin — tabla lecturas_panel</div>
+                                </div>
+                                <div style="margin-top: 14px;">
+                                    <p style="font-size: 13px; font-weight: 700; color: var(--c-citron); margin-bottom: 6px;">2. Gestión de Base de Datos en phpMyAdmin</p>
+                                    <p style="font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">Estructura interna de la base de datos <code style="background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 4px; font-size: 12px;">invernadero_db</code> gestionada a través de XAMPP. Se muestra la tabla <code style="background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 4px; font-size: 12px;">lecturas_panel</code> con columnas para ID, marca de tiempo, voltaje, corriente y potencia. Evidencia de persistencia estructurada en Localhost.</p>
+                                </div>
+                            </div>
+
+                            <!-- Evidencia 3 -->
+                            <div>
+                                <div class="corte-img-wrap">
+                                    <img src="img/ultimos10datos.jfif" alt="Mini Dashboard Web — últimas 10 lecturas">
+                                    <div class="img-caption">Mini Dashboard — últimas 10 lecturas</div>
+                                </div>
+                                <div style="margin-top: 14px;">
+                                    <p style="font-size: 13px; font-weight: 700; color: var(--c-citron); margin-bottom: 6px;">3. Interfaz de Usuario: Mini Dashboard Web</p>
+                                    <p style="font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">Cara frontal del sistema de monitoreo. Esta mini página web local consulta la base de datos para extraer y mostrar de forma estética y legible las últimas 10 lecturas registradas. Permite verificar rápidamente el comportamiento del panel solar y el estado del invernadero sin necesidad de navegar por tablas crudas.</p>
+                                </div>
+                            </div>
+
+                            <!-- Evidencia 4 -->
+                            <div>
+                                <div class="corte-img-wrap">
+                                    <img src="img/reserva.jfif" alt="Respaldo en Excel generado por Python">
+                                    <div class="img-caption">Respaldo Excel — script Python automático</div>
+                                </div>
+                                <div style="margin-top: 14px;">
+                                    <p style="font-size: 13px; font-weight: 700; color: var(--c-citron); margin-bottom: 6px;">4. Redundancia y Respaldo de Seguridad (Excel)</p>
+                                    <p style="font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin: 0;">Archivo de Excel generado automáticamente por un script de Python. Representa la capa de seguridad y redundancia del proyecto. En ingeniería de datos, es vital contar con un respaldo; este archivo sirve como "reserva" ante fallos de internet o del servidor local. El formato FECHA / HORA / V, I, W asegura que toda la información recolectada se mantenga a salvo para análisis posteriores.</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-            </div>
+            </div><!-- /cortes-section -->
         </div>
     </section>
 
@@ -877,7 +1031,7 @@
         </div>
     </section>
 
-    <!-- 6.1 BENTO APPLE-STYLE (NUEVO) -->
+    <!-- 6.1 BENTO APPLE-STYLE -->
     <section class="bento-section">
         <div class="container">
             <h2 class="section-title slide-up">🧩 Arquitectura Integral del Sistema</h2>
@@ -960,36 +1114,74 @@
         </div>
     </section>
 
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+        <button id="lightbox-close" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Animaciones al hacer scroll (Intersection Observer preservado)
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
+            /* ── Scroll animations ── */
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.10 };
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+                        obs.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
-            
-            document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in').forEach(el => {
-                observer.observe(el);
-            });
+            document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in').forEach(el => observer.observe(el));
 
-            // Lógica para cerrar menú en móviles si se hace clic fuera
+            /* ── Mobile menu close on outside click ── */
             const menuToggle = document.getElementById('menu-toggle');
             document.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768 && menuToggle.checked) {
-                    if (!e.target.closest('.menu')) {
-                        menuToggle.checked = false;
-                    }
+                    if (!e.target.closest('.menu')) menuToggle.checked = false;
                 }
             });
+
+            /* ── Lightbox ── */
+            const lb       = document.getElementById('lightbox');
+            const lbImg    = document.getElementById('lightbox-img');
+            const lbCap    = document.getElementById('lightbox-caption');
+            const lbClose  = document.getElementById('lightbox-close');
+
+            function openLightbox(src, alt, caption) {
+                lbImg.src = src;
+                lbImg.alt = alt || '';
+                lbCap.textContent = caption || '';
+                lb.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeLightbox() {
+                lb.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => { lbImg.src = ''; }, 300);
+            }
+
+            /* Attach click to every .corte-img-wrap */
+            document.querySelectorAll('.corte-img-wrap').forEach(wrap => {
+                const img = wrap.querySelector('img');
+                const cap = wrap.querySelector('.img-caption');
+                if (!img) return;
+                wrap.addEventListener('click', () => {
+                    openLightbox(img.src, img.alt, cap ? cap.textContent : img.alt);
+                });
+            });
+
+            /* Close on backdrop click, close button, or Escape */
+            lb.addEventListener('click', (e) => {
+                if (e.target === lb) closeLightbox();
+            });
+            lbClose.addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeLightbox();
+            });
+            /* Prevent click on the image itself from closing */
+            lbImg.addEventListener('click', (e) => e.stopPropagation());
         });
     </script>
 </body>
