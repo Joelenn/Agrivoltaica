@@ -451,6 +451,7 @@
                     <span style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);">Evolución</span>
                     <span style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);">Corte 1</span>
                     <span style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);">Corte 2</span>
+                    <span style="background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px);">Corte 3</span>
                 </div>
             </div>
         </div>
@@ -492,8 +493,8 @@
 
                         <!-- Image Placeholder para la foto del panel -->
                         <div class="image-placeholder">
-    <img src="img/panelsolar1.jpg" alt="Panel Solar en Medición" style="width: 100%; height: 100%; object-fit: cover;">
-</div>
+                            <img src="img/panelsolar1.jpg" alt="Panel Solar en Medición" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
                     </div>
                 </div>
 
@@ -521,8 +522,43 @@
 
                         <!-- Image Placeholder para conexión -->
                         <div class="image-placeholder">
-    <img src="img/panelsolar2.jpeg" alt="Conexión del panel con regulador y ESP32" style="width: 100%; height: 100%; object-fit: cover;">
-</div>
+                            <img src="img/panelsolar2.jpeg" alt="Conexión del panel con regulador y ESP32" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Corte 3 -->
+                <div class="timeline-item left slide-left">
+                    <div class="timeline-content">
+                        <span class="corte-badge" style="background: var(--c-citron); color: var(--c-seal-brown);">Corte 3</span>
+                        <h3>📡 Monitoreo de Alta Precisión y Persistencia de Datos</h3>
+                        <p><strong>Objetivo:</strong> Implementar telemetría avanzada y protocolos de comunicación directa para el análisis climático.</p>
+                        <p style="color: var(--c-citron); font-weight: 600; margin-bottom: 20px;">📈 Implementación del Nodo de Medición: El Sensor INA219</p>
+                        
+                        <p>En esta etapa, elevamos la calidad de la captura de datos. Pasamos de mediciones analógicas básicas a instrumentación digital de alta precisión.</p>
+                        
+                        <ul class="tech-list">
+                            <li><strong>Precisión Digital:</strong> Integramos el sensor INA219, que permite medir tanto el voltaje como la potencia real del panel a través de un bus I²C. Esto elimina el ruido eléctrico y las imprecisiones de las lecturas analógicas convencionales.</li>
+                            <li><strong>Análisis Multiclima:</strong> Gracias a esta precisión, hemos comenzado la construcción de una base de datos robusta. Esta nos permite evaluar cómo afectan las diversas variables ambientales (nubosidad, temperatura, humedad) a la eficiencia energética del sistema en tiempo real.</li>
+                        </ul>
+
+                        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 3px solid var(--c-citron);">
+                            <p style="margin: 0 0 10px; color: #fff;"><strong>📶 Protocolo de Transmisión: ESP-NOW</strong></p>
+                            <p style="margin: 0 0 10px; font-size: 14px;"><strong>Baja Latencia:</strong> Permite el intercambio de datos entre dos placas ESP32 de forma casi instantánea y sin necesidad de un router intermedio.</p>
+                            <p style="margin: 0; font-size: 14px;"><strong>Eficiencia Energética:</strong> Al evitar la sobrecarga de una red Wi-Fi tradicional, optimizamos el consumo de energía del nodo sensor, permitiendo una mayor autonomía con la carga del panel solar.</p>
+                        </div>
+
+                        <p style="margin-bottom: 15px;"><strong>⏭️ Proyección: Hacia la Automatización Industrial (LoRa y PLC)</strong></p>
+                        <p>El proyecto no se detiene aquí. Estamos preparando la transición tecnológica para entornos de gran escala:</p>
+                        <ul class="tech-list">
+                            <li><strong>Migración a LoRa:</strong> En las próximas entregas, sustituiremos ESP-NOW por tecnología LoRa (Long Range) para garantizar conectividad en zonas rurales extensas donde el Wi-Fi no tiene alcance.</li>
+                            <li><strong>Validación de Carga Industrial:</strong> El siguiente reto técnico es integrar el sistema con PLC (Controladores Lógicos Programables) y sistemas de neumática. Esto permitirá que la energía capturada no solo se monitoree, sino que ejecute acciones físicas, como la apertura de ventilación o el control de riego automatizado.</li>
+                        </ul>
+
+                        <!-- Image Placeholder -->
+                        <div class="image-placeholder">
+                            <img src="img/panelsolar3.jpg" alt="Sistema INA219 y Comunicación ESP-NOW" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -569,52 +605,52 @@
         </div>
     </section>
 
-   <!-- 5. MULTIMEDIA (Video Mockup) -->
-<section class="video-section">
-    <div class="container">
-        <h2 class="section-title slide-up" style="margin-bottom: 15px;">🎥 Sustentación Técnica</h2>
-        <p style="color: rgba(255,255,255,0.8); font-size: 18px; max-width: 700px; margin: 0 auto;" class="slide-up delay-100">
-            Presentación de Avances - Segundo Corte
-        </p>
-        <p style="color: var(--c-citron); font-size: 15px; max-width: 700px; margin: 15px auto 0;" class="slide-up delay-200">
-            <strong>Descripción:</strong> El equipo explica la arquitectura del sistema, la migración tecnológica y la importancia de la eficiencia energética en la automatización rural.
-        </p>
+    <!-- 5. MULTIMEDIA (Video Mockup) -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title slide-up" style="margin-bottom: 15px;">🎥 Sustentación Técnica</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 18px; max-width: 700px; margin: 0 auto;" class="slide-up delay-100">
+                Presentación de Avances - Segundo Corte
+            </p>
+            <p style="color: var(--c-citron); font-size: 15px; max-width: 700px; margin: 15px auto 0;" class="slide-up delay-200">
+                <strong>Descripción:</strong> El equipo explica la arquitectura del sistema, la migración tecnológica y la importancia de la eficiencia energética en la automatización rural.
+            </p>
 
-        <div class="video-wrapper slide-up delay-300">
-            <iframe 
-                src="https://www.youtube.com/embed/3lXCQTrqLKM?si=_8CgSkwcwfmm6AiD"
-                title="Sustentación Técnica Agrivoltaica" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
-            </iframe>
-        </div>
-
-        <!-- NUEVO VIDEO AGREGADO -->
-        <div style="max-width:800px; margin:40px auto 0;">
-            <div style="color:var(--c-sandstorm); font-size:20px; font-weight:700; margin-bottom:2px; text-align:center;">
-                Proyecto Agrivoltaica: Monitoreo IoT y Gestión de Energía (Semestre 4)
-            </div>
-            <div style="color:var(--c-citron); font-size:14px; font-weight:600; margin-bottom:16px; text-align:center;">
-                Último Speech (NUEVO)
-            </div>
             <div class="video-wrapper slide-up delay-300">
                 <iframe 
-                    src="https://www.youtube.com/embed/LNIZpu2PA9g?si=wsitEiV7wBUxlcHL"
-                    title="Proyecto Agrivoltaica: Monitoreo IoT y Gestión de Energía (Semestre 4)" 
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    src="https://www.youtube.com/embed/3lXCQTrqLKM?si=_8CgSkwcwfmm6AiD"
+                    title="Sustentación Técnica Agrivoltaica" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin"
                     allowfullscreen
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
                 </iframe>
             </div>
-        </div>
 
-    </div>
-</section>
+            <!-- NUEVO VIDEO AGREGADO -->
+            <div style="max-width:800px; margin:40px auto 0;">
+                <div style="color:var(--c-sandstorm); font-size:20px; font-weight:700; margin-bottom:2px; text-align:center;">
+                    Proyecto Agrivoltaica: Monitoreo IoT y Gestión de Energía (Semestre 4)
+                </div>
+                <div style="color:var(--c-citron); font-size:14px; font-weight:600; margin-bottom:16px; text-align:center;">
+                    Último Speech (NUEVO)
+                </div>
+                <div class="video-wrapper slide-up delay-300">
+                    <iframe 
+                        src="https://www.youtube.com/embed/LNIZpu2PA9g?si=wsitEiV7wBUxlcHL"
+                        title="Proyecto Agrivoltaica: Monitoreo IoT y Gestión de Energía (Semestre 4)" 
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- 6. ESPECIFICACIONES TÉCNICAS (Quick View Grid) -->
     <section class="specs-section">
@@ -645,6 +681,18 @@
                     <h4>Divisor de Tensión</h4>
                     <p>Escalamiento de la señal de 20V a 3.3V para monitoreo (no alimentación).</p>
                 </div>
+
+                <div class="spec-card slide-up delay-100">
+                    <span class="spec-icon">🔍</span>
+                    <h4>INA219</h4>
+                    <p>Medición de potencia y voltaje con resolución de 12 bits vía I²C.</p>
+                </div>
+
+                <div class="spec-card slide-up delay-200">
+                    <span class="spec-icon">📡</span>
+                    <h4>ESP-NOW</h4>
+                    <p>Protocolo de comunicación punto a punto de bajo consumo.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -671,8 +719,8 @@
                     <span class="bento-kicker">Sensores</span>
                     <h3>Instrumentación y Sensores</h3>
                     <p><strong>Sensor de Voltaje:</strong> El sistema actúa como un nodo sensor que utiliza un divisor de tensión para escalar la señal de 20V a un rango manejable de 3.3V, permitiendo que el ESP32 realice la lectura analógica de forma segura.</p>
+                    <p><strong>Sensor INA219:</strong> En el Corte 3 integramos el INA219 para mediciones de alta precisión, eliminando ruido eléctrico e imprecisiones analógicas.</p>
                     <p><strong>Instrumentación de Referencia:</strong> Se emplearon mediciones manuales con multímetro para establecer la línea base de generación y validar los resultados del sistema automatizado.</p>
-                    <p><strong>Análisis Técnico:</strong> Se incluye la investigación de fichas técnicas y el rendimiento de las celdas solares bajo condiciones controladas en invernaderos.</p>
                 </article>
 
                 <article class="bento-card bento-3 slide-up delay-100">
@@ -698,19 +746,25 @@
 
                 <article class="bento-card bento-5 slide-up delay-300">
                     <span class="bento-kicker">Conectividad</span>
-                    <h3>Paradigma IoT</h3>
+                    <h3>Paradigma IoT y Comunicación</h3>
                     <p>El proyecto implementa las tres capas fundamentales del modelo IoT:</p>
                     <ul>
-                        <li><strong>Capa de Percepción:</strong> Representada por el nodo sensor (ESP32 y circuito de medición) que captura el estado físico del panel solar.</li>
-                        <li><strong>Capa de Red:</strong> El uso de conectividad WiFi permite que los datos no se queden aislados en el dispositivo, sino que viajen hacia un sistema centralizado.</li>
-                        <li><strong>Capa de Aplicación:</strong> El almacenamiento en una base de datos y el posterior análisis de registros históricos permiten evaluar la eficiencia energética y determinar futuras aplicaciones, como el riego automatizado o la ventilación en el invernadero.</li>
+                        <li><strong>Capa de Percepción:</strong> Representada por el nodo sensor (ESP32 con INA219) que captura el estado físico del panel solar con alta precisión.</li>
+                        <li><strong>Capa de Red:</strong> Uso de ESP-NOW para comunicación punto a punto de bajo consumo. Futura migración a LoRa para zonas rurales extensas.</li>
+                        <li><strong>Capa de Aplicación:</strong> Almacenamiento en base de datos y análisis de registros históricos para evaluar eficiencia energética y determinar futuras automatizaciones.</li>
                     </ul>
                 </article>
 
                 <article class="bento-card bento-6 slide-up delay-300">
-                    <span class="bento-kicker">Resumen Ejecutivo</span>
-                    <h3>Convergencia Tecnológica para Automatización Rural</h3>
-                    <p>La solución integra electrónica de potencia, sensórica analógica, procesamiento embebido, conectividad IoT y lógica de automatización inspirada en PLC para construir una plataforma robusta y escalable orientada al monitoreo energético en entornos agrícolas.</p>
+                    <span class="bento-kicker">Proyección Industrial</span>
+                    <h3>🗄️ Gestión de Información y Transferencia</h3>
+                    <p><strong>Corte 3 Update:</strong> Especificaciones técnicas avanzadas para automatización industrial.</p>
+                    <ul>
+                        <li><strong>INA219:</strong> Medición de potencia y voltaje con resolución de 12 bits.</li>
+                        <li><strong>Base de Datos:</strong> Estructura de logs para análisis histórico de rendimiento y variables climáticas (temperatura, humedad, nubosidad).</li>
+                        <li><strong>ESP-NOW:</strong> Comunicación punto a punto optimizada de bajo consumo.</li>
+                        <li><strong>Futura Integración:</strong> Nodo LoRa para largo alcance y actuadores neumáticos para ventilación y riego automatizado.</li>
+                    </ul>
                 </article>
 
             </div>
