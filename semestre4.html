@@ -137,44 +137,207 @@
         .evolution-card h4 { color: var(--c-sandstorm); font-size: 18px; font-weight: 500; margin: 0 0 25px; letter-spacing: 1px; text-transform: uppercase; }
         .evolution-card p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.7; max-width: 800px; margin: 0 auto; }
 
-        /* Timeline Flow */
-        .timeline { position: relative; max-width: 1100px; margin: 0 auto; z-index: 2; }
-        .timeline::after {
-            content: ''; position: absolute; width: 2px; background: rgba(236, 213, 64, 0.3);
-            top: 0; bottom: 0; left: 50%; margin-left: -1px; z-index: 1;
+        /* ===== VERTICAL CARD TIMELINE (NUEVO DISEÑO) ===== */
+        .vertical-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        .timeline-item { padding: 10px 28px; position: relative; background: inherit; width: 50%; box-sizing: border-box; margin-bottom: 36px; }
-        .timeline-item::after {
-            content: '✦'; position: absolute; width: 40px; height: 40px; right: -20px; background: var(--c-seal-brown);
-            border: 2px solid var(--c-sandstorm); top: 15px; border-radius: 50%; z-index: 2;
-            color: var(--c-sandstorm); display: flex; align-items: center; justify-content: center; font-size: 18px;
-            box-shadow: 0 0 15px rgba(236, 213, 64, 0.5);
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, rgba(236, 213, 64, 0.8) 0%, rgba(236, 213, 64, 0.3) 50%, rgba(236, 213, 64, 0.1) 100%);
+            transform: translateX(-50%);
+            z-index: 0;
         }
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; text-align: left; }
-        .right::after { left: -20px; }
 
-        .timeline-content {
-            padding: 28px; background: rgba(0, 0, 0, 0.2); border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            position: relative; transition: all 0.4s ease;
+        .timeline-card {
+            position: relative;
+            width: 48%;
+            z-index: 1;
         }
-        .timeline-content:hover { background: rgba(255, 255, 255, 0.03); transform: translateY(-5px); border-color: rgba(255,255,255,0.15); }
-        
-        .corte-badge {
-            display: inline-block; background: var(--c-grasshopper); color: #fff; padding: 6px 16px;
-            border-radius: 50px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px;
+
+        .timeline-card.left {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: right;
+            padding-right: 60px;
         }
-        .timeline-content h3 { font-size: 24px; color: var(--c-sandstorm); margin: 0 0 15px; line-height: 1.2; }
-        .timeline-content p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 20px; }
-        
-        .tech-list { text-align: left; list-style: none; padding: 0; margin: 0 0 25px; }
-        .tech-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 15px; color: rgba(255,255,255,0.9); line-height: 1.5; }
-        .tech-list li::before { content: '✓'; position: absolute; left: 0; color: var(--c-citron); font-weight: bold; }
-        .left .tech-list { text-align: right; }
-        .left .tech-list li { padding-left: 0; padding-right: 24px; }
-        .left .tech-list li::before { left: auto; right: 0; }
+
+        .timeline-card.right {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: left;
+            padding-left: 60px;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--c-seal-brown);
+            border: 4px solid var(--c-sandstorm);
+            border-radius: 50%;
+            top: 30px;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(236, 213, 64, 0.6);
+        }
+
+        .timeline-card.left::before {
+            right: -41px;
+        }
+
+        .timeline-card.right::before {
+            left: -41px;
+        }
+
+        .timeline-card-content {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-top: 2px solid rgba(236, 213, 64, 0.4);
+            border-radius: 20px;
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+
+        .timeline-card-content:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(236, 213, 64, 0.6);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .corte-badge-new {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            background: rgba(236, 213, 64, 0.2);
+            border: 1px solid rgba(236, 213, 64, 0.4);
+            color: var(--c-citron);
+        }
+
+        .corte-badge-new.corte1 {
+            background: rgba(122, 114, 41, 0.3);
+            border-color: rgba(122, 114, 41, 0.6);
+            color: var(--c-grasshopper);
+        }
+
+        .corte-badge-new.corte2 {
+            background: rgba(236, 213, 64, 0.25);
+            border-color: rgba(236, 213, 64, 0.5);
+            color: var(--c-sandstorm);
+        }
+
+        .corte-badge-new.corte3 {
+            background: rgba(221, 208, 106, 0.2);
+            border-color: rgba(221, 208, 106, 0.5);
+            color: var(--c-citron);
+        }
+
+        .timeline-card-content h3 {
+            font-size: 26px;
+            color: var(--c-sandstorm);
+            margin: 0 0 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .timeline-card-content .subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .timeline-card-content p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .timeline-card-content .highlight-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 3px solid var(--c-sandstorm);
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .timeline-card-content .highlight-box strong {
+            color: var(--c-citron);
+        }
+
+        .timeline-tech-list {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0;
+        }
+
+        .timeline-tech-list li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .timeline-tech-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--c-citron);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .timeline-card-content .image-placeholder {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed rgba(236, 213, 64, 0.4);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, rgba(60, 52, 31, 0.5), rgba(75, 83, 32, 0.3));
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .timeline-card-content .image-placeholder:hover {
+            border-color: var(--c-sandstorm);
+            background: linear-gradient(45deg, rgba(60, 52, 31, 0.8), rgba(75, 83, 32, 0.5));
+        }
+
+        .timeline-card-content .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         /* Image Placeholders (Hologram style) */
         .image-placeholder {
@@ -368,19 +531,31 @@
             .navbar a { color: #f5f5f7; font-size: 17px; padding: 12px 30px; opacity: 0.86; }
             #menu-toggle:checked ~ .navbar { right: 0; }
             
-            .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 80px; padding-right: 0; text-align: left; margin-bottom: 28px; }
-            .timeline-item::after { left: 11px; right: auto; }
-            .right { left: 0; }
-            .left .tech-list { text-align: left; }
-            .left .tech-list li { padding-left: 24px; padding-right: 0; }
-            .left .tech-list li::before { left: 0; right: auto; }
-            
             .pdf-card { flex-direction: column; text-align: center; padding: 30px 20px; }
             .evolution-card { padding: 30px 20px; }
             .tree-container { display: none; }
 
             .bento-1, .bento-2, .bento-3, .bento-4, .bento-5, .bento-6 { grid-column: span 12; }
+
+            /* Timeline Responsive */
+            .vertical-timeline::before {
+                left: 0;
+            }
+
+            .timeline-card {
+                width: 100% !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-card.left::before,
+            .timeline-card.right::before {
+                left: -41px !important;
+                right: auto !important;
+            }
         }
     </style>
 </head>
@@ -472,95 +647,100 @@
                 <p style="margin-top: 15px;">Migramos hacia el proyecto Agrivoltaica para enfrentar un desafío técnico real: la convergencia entre la electrónica de potencia, el control de procesos y el Internet de las Cosas (IoT). Este cambio nos permite aplicar los pilares de nuestra carrera en una solución sostenible y escalable para el campo.</p>
             </div>
 
-            <!-- Timeline Cuts -->
-            <div class="timeline">
+            <!-- NUEVO VERTICAL TIMELINE DISEÑO -->
+            <div class="vertical-timeline">
                 
-                <!-- 2. Corte 1 -->
-                <div class="timeline-item left slide-left">
-                    <div class="timeline-content">
-                        <span class="corte-badge">Corte 1</span>
-                        <h3>📊 Investigación y Análisis (Módulo IoT)</h3>
-                        <p><strong>Objetivo:</strong> Determinar la viabilidad del sistema y caracterizar la fuente de energía.</p>
-                        <p style="color: var(--c-citron); font-weight: 600; margin-bottom: 20px;">🔍 Fase Única Ejecutada: Análisis del Sistema</p>
-                        
-                        <p>En esta etapa inicial del módulo de Internet de las Cosas (IoT), nos centramos exclusivamente en la fase de diagnóstico:</p>
-                        <ul class="tech-list">
+                <!-- CORTE 1 -->
+                <div class="timeline-card left slide-left">
+                    <div class="timeline-card-content">
+                        <span class="corte-badge-new corte1">📊 Corte 1</span>
+                        <h3>Investigación y Análisis (Módulo IoT)</h3>
+                        <div class="subtitle">Objetivo: Determinar la viabilidad del sistema y caracterizar la fuente de energía</div>
+
+                        <div class="highlight-box">
+                            <strong>🔍 Fase Única Ejecutada: Análisis del Sistema</strong><br/>
+                            En esta etapa inicial del módulo de Internet de las Cosas (IoT), nos centramos exclusivamente en la fase de diagnóstico.
+                        </div>
+
+                        <ul class="timeline-tech-list">
                             <li><strong>Estudio Fotovoltaico:</strong> Investigación del rendimiento de celdas solares en entornos controlados (invernaderos).</li>
                             <li><strong>Caracterización Técnica:</strong> Análisis de las fichas técnicas y comportamiento del panel solar seleccionado.</li>
                             <li><strong>Validación de Campo:</strong> Mediciones manuales con multímetro para establecer la línea base de generación.</li>
                             <li><strong>Resultados Obtenidos:</strong> Registros estables entre 19.2V y 20.5V durante picos de radiación solar.</li>
                         </ul>
 
-                        <!-- Image Placeholder para la foto del panel -->
                         <div class="image-placeholder">
                             <img src="img/panelsolar1.jpg" alt="Panel Solar en Medición" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. Corte 2 -->
-                <div class="timeline-item right slide-right">
-                    <div class="timeline-content">
-                        <span class="corte-badge" style="background: var(--c-sandstorm); color: var(--c-seal-brown);">Corte 2</span>
-                        <h3>⚙️ Ingeniería de Hardware y Gestión de Potencia</h3>
-                        <p><strong>Objetivo:</strong> Implementación del nodo sensor ESP32 y estabilización de la alimentación.</p>
-                        <p style="color: var(--c-citron); font-weight: 600; margin-bottom: 20px;">⚡ Implementación Práctica</p>
-                        
+                <!-- CORTE 2 -->
+                <div class="timeline-card right slide-right">
+                    <div class="timeline-card-content">
+                        <span class="corte-badge-new corte2">⚙️ Corte 2</span>
+                        <h3>Ingeniería de Hardware y Gestión de Potencia</h3>
+                        <div class="subtitle">Objetivo: Implementación del nodo sensor ESP32 y estabilización de la alimentación</div>
+
                         <p>Aquí es donde el proyecto cobra vida técnica. Tras el análisis, pasamos a resolver el problema de la alimentación y la captura de datos.</p>
-                        
-                        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 3px solid var(--c-sandstorm);">
-                            <p style="margin: 0 0 10px; color: #fff;"><strong>Alimentación y Regulación: La Decisión Técnica</strong></p>
-                            <p style="margin: 0; font-size: 14px;">Para alimentar nuestra ESP32 (3.3V) desde la salida del panel (20V), descartamos el uso de un divisor de voltaje resistivo. Aunque es útil para medir señales, para alimentación es ineficiente y peligroso para el microcontrolador, ya que no soporta los picos de corriente del módulo WiFi y desperdicia energía en forma de calor.</p>
+
+                        <div class="highlight-box">
+                            <strong>Alimentación y Regulación: La Decisión Técnica</strong><br/>
+                            Para alimentar nuestra ESP32 (3.3V) desde la salida del panel (20V), descartamos el uso de un divisor de voltaje resistivo. Aunque es útil para medir señales, para alimentación es ineficiente y peligroso para el microcontrolador, ya que no soporta los picos de corriente del módulo WiFi y desperdicia energía en forma de calor.
                         </div>
 
-                        <p><strong>Nuestra Solución: El Módulo LM2596 (Buck Converter)</strong><br>Optamos por el regulador conmutado LM2596. Respondemos a la crítica técnica sobre su consumo interno con fundamentos de ingeniería:</p>
-                        <ul class="tech-list">
+                        <p><strong>Nuestra Solución: El Módulo LM2596 (Buck Converter)</strong></p>
+                        
+                        <ul class="timeline-tech-list">
                             <li><strong>Robustez:</strong> A diferencia de reguladores más modernos y frágiles, el LM2596 es altamente resistente a picos de tensión, ideal para un entorno industrial/rural.</li>
                             <li><strong>Eficiencia Térmica:</strong> Maneja el diferencial de voltaje (de 20V a 5V/3.3V) con una disipación de calor controlada.</li>
                             <li><strong>Justificación:</strong> Dado que el panel genera un excedente de energía, el consumo mínimo del regulador (quiescent current) es insignificante comparado con la estabilidad y seguridad que brinda a la ESP32.</li>
                         </ul>
 
-                        <!-- Image Placeholder para conexión -->
                         <div class="image-placeholder">
                             <img src="img/panelsolar2.jpeg" alt="Conexión del panel con regulador y ESP32" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. Corte 3 -->
-                <div class="timeline-item left slide-left">
-                    <div class="timeline-content">
-                        <span class="corte-badge" style="background: var(--c-citron); color: var(--c-seal-brown);">Corte 3</span>
-                        <h3>📡 Monitoreo de Alta Precisión y Persistencia de Datos</h3>
-                        <p><strong>Objetivo:</strong> Implementar telemetría avanzada y protocolos de comunicación directa para el análisis climático.</p>
-                        <p style="color: var(--c-citron); font-weight: 600; margin-bottom: 20px;">📈 Implementación del Nodo de Medición: El Sensor INA219</p>
-                        
-                        <p>En esta etapa, elevamos la calidad de la captura de datos. Pasamos de mediciones analógicas básicas a instrumentación digital de alta precisión.</p>
-                        
-                        <ul class="tech-list">
-                            <li><strong>Precisión Digital:</strong> Integramos el sensor INA219, que permite medir tanto el voltaje como la potencia real del panel a través de un bus I²C. Esto elimina el ruido eléctrico y las imprecisiones de las lecturas analógicas convencionales.</li>
-                            <li><strong>Análisis Multiclima:</strong> Gracias a esta precisión, hemos comenzado la construcción de una base de datos robusta. Esta nos permite evaluar cómo afectan las diversas variables ambientales (nubosidad, temperatura, humedad) a la eficiencia energética del sistema en tiempo real.</li>
-                        </ul>
+                <!-- CORTE 3 -->
+                <div class="timeline-card left slide-left">
+                    <div class="timeline-card-content">
+                        <span class="corte-badge-new corte3">📡 Corte 3</span>
+                        <h3>Monitoreo de Alta Precisión y Persistencia de Datos</h3>
+                        <div class="subtitle">Objetivo: Implementar telemetría avanzada y protocolos de comunicación directa para el análisis climático</div>
 
-                        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 3px solid var(--c-citron);">
-                            <p style="margin: 0 0 10px; color: #fff;"><strong>📶 Protocolo de Transmisión: ESP-NOW</strong></p>
-                            <p style="margin: 0 0 10px; font-size: 14px;"><strong>Baja Latencia:</strong> Permite el intercambio de datos entre dos placas ESP32 de forma casi instantánea y sin necesidad de un router intermedio.</p>
-                            <p style="margin: 0; font-size: 14px;"><strong>Eficiencia Energética:</strong> Al evitar la sobrecarga de una red Wi-Fi tradicional, optimizamos el consumo de energía del nodo sensor, permitiendo una mayor autonomía con la carga del panel solar.</p>
+                        <p>En esta etapa, elevamos la calidad de la captura de datos. Pasamos de mediciones analógicas básicas a instrumentación digital de alta precisión.</p>
+
+                        <div class="highlight-box">
+                            <strong>📈 Implementación del Nodo de Medición: El Sensor INA219</strong><br/>
+                            Integramos el sensor INA219, que permite medir tanto el voltaje como la potencia real del panel a través de un bus I²C. Esto elimina el ruido eléctrico y las imprecisiones de las lecturas analógicas convencionales.
                         </div>
 
-                        <p style="margin-bottom: 15px;"><strong>⏭️ Proyección: Hacia la Automatización Industrial (LoRa y PLC)</strong></p>
-                        <p>El proyecto no se detiene aquí. Estamos preparando la transición tecnológica para entornos de gran escala:</p>
-                        <ul class="tech-list">
-                            <li><strong>Migración a LoRa:</strong> En las próximas entregas, sustituiremos ESP-NOW por tecnología LoRa (Long Range) para garantizar conectividad en zonas rurales extensas donde el Wi-Fi no tiene alcance.</li>
-                            <li><strong>Validación de Carga Industrial:</strong> El siguiente reto técnico es integrar el sistema con PLC (Controladores Lógicos Programables) y sistemas de neumática. Esto permitirá que la energía capturada no solo se monitoree, sino que ejecute acciones físicas, como la apertura de ventilación o el control de riego automatizado.</li>
+                        <ul class="timeline-tech-list">
+                            <li><strong>Precisión Digital:</strong> Resolución de 12 bits para mediciones altamente precisas.</li>
+                            <li><strong>Análisis Multiclima:</strong> Base de datos robusta que evalúa cómo afectan variables ambientales (nubosidad, temperatura, humedad) a la eficiencia energética en tiempo real.</li>
                         </ul>
 
-                        <!-- Image Placeholder -->
+                        <div class="highlight-box">
+                            <strong>📶 Protocolo de Transmisión: ESP-NOW</strong><br/>
+                            <strong>Baja Latencia:</strong> Intercambio de datos entre dos placas ESP32 de forma casi instantánea sin router.<br/>
+                            <strong>Eficiencia Energética:</strong> Optimización del consumo de energía del nodo sensor, permitiendo mayor autonomía con la carga del panel.
+                        </div>
+
+                        <p style="margin-top: 15px;"><strong>⏭️ Proyección: Hacia la Automatización Industrial (LoRa y PLC)</strong></p>
+                        
+                        <ul class="timeline-tech-list">
+                            <li><strong>Migración a LoRa:</strong> Sustituir ESP-NOW por tecnología LoRa (Long Range) para conectividad en zonas rurales extensas donde el Wi-Fi no tiene alcance.</li>
+                            <li><strong>Validación de Carga Industrial:</strong> Integración con PLC (Controladores Lógicos Programables) y sistemas de neumática para ejecutar acciones físicas como ventilación y riego automatizado.</li>
+                        </ul>
+
                         <div class="image-placeholder">
-                            <img src="img/ina219.png" alt="Sistema INA219 y Comunicación ESP-NOW" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="img/panelsolar3.jpg" alt="Sistema INA219 y Comunicación ESP-NOW" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
