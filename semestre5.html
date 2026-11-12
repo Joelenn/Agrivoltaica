@@ -7,6 +7,9 @@
     <title>Semestre 5 - Sistema Agrivoltaico | Life Bracelet</title>
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
     <style>
         :root {
             --agr-green: #4b5320;
@@ -379,6 +382,104 @@
             box-shadow: 0 8px 20px rgba(75, 83, 32, 0.3);
         }
 
+        /* Utilidades transferidas de semestre4.html */
+        .prototipo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .gallery-item {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item figcaption {
+            padding: 15px;
+            font-size: 14px;
+            color: rgba(26, 26, 26, 0.8);
+            font-style: italic;
+            text-align: center;
+            background: linear-gradient(transparent, rgba(123, 189, 232, 0.05));
+        }
+
+        .formula-block {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid var(--agr-yellow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .evolution-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+            padding-left: 30px;
+        }
+
+        .evolution-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--agr-green), var(--agr-blue));
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--agr-green);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px var(--agr-green);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(236, 23, 99, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(236, 23, 99, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(236, 23, 99, 0); }
+        }
+
+        .pulse-animation {
+            animation: pulse-glow 2s infinite;
+        }
+
         .separator {
             border: 0;
             height: 1px;
@@ -516,6 +617,12 @@
     </div>
 
     <header class="header blur-header">
+        <div class="particles-bg">
+            <div class="particle" style="top: 80%; left: 10%; animation-duration: 8s;"></div>
+            <div class="particle" style="top: 60%; left: 50%; animation-duration: 12s;"></div>
+            <div class="particle" style="top: 90%; left: 80%; animation-duration: 10s;"></div>
+        </div>
+
         <div class="header-banner-container fade-in">
             <div class="banner-overlay">
                 <h1 class="banner-title">Quinto Semestre</h1>
@@ -530,6 +637,7 @@
                 <a href="#red" class="progress-step">Red IoT</a>
                 <a href="#aplicacion" class="progress-step">Aplicación</a>
                 <a href="#metodologia" class="progress-step">Metodología</a>
+                <a href="#documentacion" class="progress-step">Documentación</a>
             </div>
         </div>
     </header>
@@ -828,6 +936,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Renderización de KaTeX, igual que en semestre4.html.
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false }
+                    ],
+                    ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a']
+                });
+            }
+
+            // Observador para animaciones, igual que en semestre4.html.
             const observer = new IntersectionObserver((entries, currentObserver) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -835,20 +955,29 @@
                         currentObserver.unobserve(entry.target);
                     }
                 });
-            }, { root: null, rootMargin: '0px', threshold: 0.1 });
-
-            document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in').forEach(element => {
-                observer.observe(element);
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
             });
 
+            document.querySelectorAll('.slide-up, .slide-left, .slide-right, .fade-in, .delay-200, .delay-400, .delay-600').forEach(element => {
+                if (!element.classList.contains('visible')) {
+                    observer.observe(element);
+                }
+            });
+
+            // Navegación suave y actualización del indicador de progreso.
             const progressSteps = document.querySelectorAll('.progress-step');
             const sections = document.querySelectorAll('.corte-section');
 
             function updateProgressIndicator() {
-                const scrollPosition = window.scrollY + 120;
+                const scrollPosition = window.scrollY + 100;
+
                 sections.forEach((section, index) => {
                     const sectionTop = section.offsetTop;
                     const sectionBottom = sectionTop + section.offsetHeight;
+
                     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                         progressSteps.forEach(step => step.classList.remove('active'));
                         if (progressSteps[index]) {
@@ -861,6 +990,21 @@
             window.addEventListener('scroll', updateProgressIndicator);
             updateProgressIndicator();
 
+            // Efecto Blur-on-Scroll transferido de semestre4.html.
+            const header = document.querySelector('.blur-header');
+
+            function handleScroll() {
+                const scrollPosition = window.scrollY;
+                const maxBlur = 10;
+                const blurAmount = Math.min(scrollPosition / 100, maxBlur);
+
+                if (header) {
+                    header.style.backdropFilter = `blur(${blurAmount}px)`;
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+
             const menuToggle = document.getElementById('menu-toggle');
             const menuOverlay = document.querySelector('.menu-overlay');
             if (menuOverlay) {
@@ -869,6 +1013,18 @@
                 });
             }
         });
+
+        // Función transferida de semestre4.html para futuros videos embebidos.
+        function playVideo(container) {
+            const iframe = container.querySelector('iframe');
+            const placeholder = container.querySelector('.video-placeholder');
+
+            if (iframe && placeholder) {
+                iframe.src = `${iframe.getAttribute('data-src')}?autoplay=1`;
+                iframe.style.display = 'block';
+                placeholder.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
