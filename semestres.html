@@ -72,7 +72,6 @@
         .navbar ul { display: flex; list-style: none; margin: 0; padding: 0; gap: 0; align-items: center; }
         .navbar li { position: relative; }
         
-        /* CORRECCIÓN APLICADA AQUÍ: Idéntico al index.html sin font-weight extra en el hover */
         .navbar a {
             color: var(--c-seal-brown); text-decoration: none; font-size: 12px; font-weight: 500;
             letter-spacing: -0.01em; padding: 0 12px; line-height: 44px; display: block;
@@ -153,7 +152,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Orbes de fondo sutiles para cohesión */
         .orb {
             position: absolute; border-radius: 50%; filter: blur(90px); z-index: 0; opacity: 0.3;
             animation: floatOrb 12s infinite alternate ease-in-out; pointer-events: none;
@@ -242,7 +240,6 @@
             transform: rotate(180deg); color: var(--c-sandstorm);
         }
 
-        /* Magia del Acordeón con Grid CSS puro */
         .card-details-wrapper {
             display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
@@ -267,7 +264,6 @@
             display: flex; gap: 12px; flex-wrap: wrap;
         }
 
-        /* Botones integrados a la paleta */
         .btn-primary {
             display: inline-block; background: var(--c-sandstorm); color: var(--c-seal-brown);
             font-size: 14px; font-weight: 600; padding: 10px 24px; border-radius: 50px;
@@ -335,7 +331,7 @@
             .card-title-group { width: 100%; justify-content: space-between; margin-bottom: 5px;}
             .card-icon { width: 35px; height: 35px; font-size: 18px; }
             .card-title h3 { font-size: 18px; }
-            .toggle-icon { display: none; } /* Ocultar chevron en movil para ahorrar espacio */
+            .toggle-icon { display: none; }
             .card-actions { flex-direction: column; }
             .btn-primary, .btn-ghost { text-align: center; width: 100%; }
         }
@@ -368,7 +364,6 @@
     <!-- HERO SECTION (Pantalla Completa) -->
     <header class="header">
         <div class="header-banner-container fade-in">
-            <!-- Árboles Animados -->
             <div class="tree-container tree-left">
                 <svg viewBox="0 0 100 200" preserveAspectRatio="none" width="100%" height="100%"><rect x="45" y="150" width="10" height="50" fill="#321414" /><polygon points="50,10 90,80 10,80" fill="#7A7229" /><polygon points="50,50 95,120 5,120" fill="#4B5320" /><polygon points="50,90 100,160 0,160" fill="#4B5320" /></svg>
             </div>
@@ -492,6 +487,30 @@
                                 <p>Migración de proyecto tecnológico a Agrivoltaica. Enterate más acá!</p>
                                 <div class="card-actions">
                                     <a href="semestre4.html" class="btn-primary">Ver Semestre 4</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Semestre 5 -->
+                <article class="semestre-card slide-left delay-600" role="button" tabindex="0" aria-expanded="false">
+                    <div class="card-head">
+                        <div class="card-title-group">
+                            <span class="card-icon">5</span>
+                            <div class="card-title">
+                                <h3>Semestre 5</h3>
+                                <p class="card-sub">Conexión con NEMA 17, ESP-NOW y capas de IoT.</p>
+                            </div>
+                        </div>
+                        <span class="toggle-icon" aria-hidden="true">▾</span>
+                    </div>
+                    <div class="card-details-wrapper">
+                        <div class="card-details-inner">
+                            <div class="card-details-content">
+                                <p>En el quinto semestre se trabajó en la conexión con motores NEMA 17, la comunicación inalámbrica mediante ESP-NOW y la integración de las distintas capas de IoT, contemplando conexión local y conexión a la nube.</p>
+                                <div class="card-actions">
+                                    <a href="semestre5.html" class="btn-primary">Ver Semestre 5</a>
                                 </div>
                             </div>
                         </div>
